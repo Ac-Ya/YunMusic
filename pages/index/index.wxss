@@ -1,0 +1,141 @@
+
+
+/* 轮播图样式 */
+.banners{
+  width:100%;
+  height:300rpx;
+}
+.banners image{
+  width: 100%;
+  height: 100%;
+}
+/* 导航栏样式 */
+.nav{
+  display:flex;
+  padding: 20rpx 10rpx;
+  font-size: 24rpx;
+  position: relative;
+
+}
+.nav .nav-item{
+  display: flex;
+  flex-direction: column; /*元素纵向布局*/
+  align-items: center;
+  width:20%;
+}
+.nav .iconfont{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #DD001B;
+  text-align: center;
+  line-height: 100rpx;
+  color: white;
+  font-size: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+/* 推荐区域 */
+/* 推荐区域头部 */
+.recommond{
+  /* width: 100%; */
+  padding: 10rpx 20rpx 0rpx 20rpx;  
+}
+.recommond .title{
+  font-size: 28rpx;
+  color: #666;
+  line-height: 60rpx;
+}
+.recommond .more{
+  float: right;
+  border: 1px solid black;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  padding: 10rpx;
+}
+.recommond .recommond-header{
+  margin-bottom: 30rpx;
+}
+/* 推荐内容区 */
+.recommond .recommond-content{
+  display: flex;
+  height: 300rpx;
+}
+.content-item{
+  width: 200rpx;
+  margin-right: 20rpx;
+  
+}
+.content-item image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+}
+.content-item text{
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  font-size: 26rpx;
+}
+
+/* 排行榜区域 */
+/* 排行榜头部 */
+.ranking-list{
+  /* width: 100%; */
+  padding: 10rpx 20rpx;  
+}
+.ranking-list .title{
+  font-size: 28rpx;
+  color: #666;
+  line-height: 60rpx;
+}
+.ranking-list .more{
+  float: right;
+  border: 1px solid black;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  padding: 10rpx;
+}
+.ranking-list .ranking-list-header{
+  margin-bottom: 30rpx;
+}
+/* 排行榜内容区 */
+.ranking-list-content{
+  width: 98%;
+  height: 550rpx;
+  /* background-color:	#F5F5F5; */
+  border-radius: 20rpx;
+}
+.ranking-list-item{
+  margin-right: 20rpx;
+}
+.ranking-list-content .ranking-list-title,
+.ranking-list-content .iconfont{
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.ranking-list-item image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}
+.music-item{
+  display: flex;
+  margin-bottom: 10rpx;
+}
+.music-item .count{
+  width:150rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  text-align: center;
+}
+.music-item .name{
+  width: 300rpx;
+  text-align: center;
+  line-height: 150rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

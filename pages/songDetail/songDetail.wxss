@@ -1,0 +1,137 @@
+/* pages/songDetail/songDetail.wxss */
+/* 设置背景模糊 */
+.songDetailContainer{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.bg_img{
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-image: url('http://p4.music.126.net/YDBuISg47G3jbxiSk3Bb0Q==/109951165325647296.jpg'); */
+  background-position: center 0;
+  filter: blur(30rpx);
+  transform: scale(1.5);
+  position: absolute;
+}
+
+.bg_img::after{
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(17,17,17,.1);
+}
+.songDetail_header{
+  position: absolute;
+  top: 80rpx;
+  left: 100rpx;
+  height: 40rpx;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  /* z-index: 9; */
+  /* font-size: 60rpx; */
+}
+.songDetail_header .songName{
+  font-size: 36rpx;
+}
+.songDetail_header .singerName{
+  color:#D3D3D3;
+}
+/* 回退图标 */
+.back{
+  position: absolute;
+  top: 80rpx;
+  left: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.back .iconfont{
+  color: #fff;
+  font-size: 48rpx;
+}
+
+
+
+/* 中间磁盘样式 */
+.songDetail_center{
+  position: absolute;
+  top:230rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  text-align: center;
+}
+/* 设置指针的样式 */
+.circle{
+  position: relative;
+  left: 51%;
+  transform: translate(-50%,0);
+  box-shadow: -5rpx 0 6rpx rgba(17,17,17,.5);
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background-color: #fff;
+  z-index: 99;
+}
+.pointer image{
+  position: relative;
+  top:-40rpx;
+  left: 60rpx;
+  width: 192rpx;
+  height: 234rpx;
+  /* border: 1px solid red; */
+  z-index: 9;
+
+  transform-origin: 30rpx 0;
+  transform: rotate(-21deg);
+  transition: transform 0.8s;
+}
+.pointer .play{
+  transform: rotate(0deg);
+}
+
+.cipan{
+  position: relative;
+  top:-180rpx
+}
+/* 磁盘转动动画 */
+.diskAnimation{
+  animation: mymove 10s linear infinite;
+  animation-delay: 0.8s;
+}
+@keyframes mymove
+{
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+
+
+/* 底部播放控件 */
+.songDetail_control{ 
+  position: absolute;
+  bottom:40rpx;
+  display: flex;
+  width: 100%;
+  height:160rpx;
+  /* border: 1px solid red; */
+
+}
+.songDetail_control text{
+  flex:20%;
+  height: 160rpx;
+  line-height: 160rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 52rpx;
+}
+.songDetail_control .big{
+  font-size: 100rpx;
+}

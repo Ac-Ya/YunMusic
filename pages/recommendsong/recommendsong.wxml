@@ -1,0 +1,41 @@
+<!--pages/recommendsong/recommendsong.wxml-->
+<view class="recommendsongContainer">
+<!-- 设置头部区域 -->
+  <view class="header">
+    <image src="../../static/recommendsong/recommendSong.jpg"></image>
+    <view class="date">
+      <text class="day">{{day}}</text>
+      <text class="month">/{{month}}</text>
+    </view>  
+  </view>
+<!-- 设置弧线 -->
+  <view class="out">
+    <view class="in"></view>
+  </view>
+<!--设置内容区域 -->
+  <view class="content">
+    <view class="content_controls"> 
+      <view class="play">
+        <text class="iconfont icon-bofang"></text>
+        <text>播放全部</text>
+      </view>
+      <view class="choose">
+        <text class="iconfont icon-duoxuankuang"></text>
+        <text>多选</text>
+      </view>
+    </view>
+    
+    <scroll-view class="recommendsong_scroll" scroll-y>
+      <view class="scroll_item" wx:for="{{recomendsongList}}" wx:key="id" bindtap="toSongDetail" data-song="{{item}}">
+        <image src="{{item.album.picUrl}}" lazy-load="true"></image>
+        <view class="music_info">
+          <text class="musicname">{{item.name}}</text>
+          <text class="author">{{item.artists[0].name}}</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+    </scroll-view>
+  </view>
+
+
+</view>

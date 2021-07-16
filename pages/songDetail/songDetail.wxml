@@ -1,0 +1,33 @@
+<!--pages/songDetail/songDetail.wxml-->
+<view class="songDetailContainer">
+  <view class="bg_img" style="background-image:url('{{songDetailData.al.picUrl}}')"></view>
+  <view class="back">
+    <text class="iconfont icon-zuo"></text>
+  </view>
+ <!--设置头部 歌曲名和歌手 -->
+  <view class="songDetail_header">
+    <text class="songName">{{songDetailData.name}}</text>
+    <text class="singerName">{{songDetailData.ar[0].name}}</text>
+  </view>
+  <!-- 设置磁盘 -->
+  <view class="songDetail_center">
+    <!-- 指针 -->
+    <view class="pointer">
+      <view class="circle"></view>
+      <image src="/static/song/needle.png" class="{{isplay ? 'play' : ''}}"></image>
+    </view>
+    <view class="cipan {{isplay ? 'diskAnimation' : ''}}">
+      <disk>
+        <image src='{{songDetailData.al.picUrl}}'></image>
+      </disk>
+    </view>
+  </view>  
+  <!-- 设置底部播放控件 -->
+  <view class="songDetail_control">
+    <text class="iconfont icon-suijibofang"></text>
+    <text class="iconfont icon-shangyiqu"></text>
+    <text class="iconfont {{isplay ? 'icon-bofang3' : 'icon-zanting1'}} big"></text>
+    <text class="iconfont icon-xiayiqu"></text>
+    <text class="iconfont icon-bofangliebiao"></text>    
+  </view>
+</view>

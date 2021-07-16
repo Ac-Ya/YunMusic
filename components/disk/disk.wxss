@@ -1,0 +1,61 @@
+
+/**
+ * 黑胶唱片样式效果
+ */
+.level_1{
+  width: 480rpx;
+  height: 480rpx;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 auto;
+  position: relative;
+  border-radius: 50%;
+  padding: 1.5%;
+  /* animation: mymove 10s linear infinite;
+  animation-delay: 2s; */
+}
+
+/* @keyframes mymove
+{
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+} */
+
+.level_2{
+  width: 97%;
+  height: 97%;
+  background-color: #262628;
+  border-radius: 50%;
+  padding: 1.5%;
+  background: linear-gradient(#101012, #272729, #101012);
+}
+
+.level_3{
+  width:97%;
+  height:97%;
+  border:1px solid #131315;
+  border-radius:50%;
+  padding:1%;
+}
+
+.level_4{
+  height: 92%;
+  width: 92%;
+  border: 5px solid #0b0708;
+}
+
+.level_5{
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+}
+
+.level_5>image{
+  width: 100%;
+  height: 100%;
+  border-radius:50%;
+}

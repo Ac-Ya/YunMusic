@@ -1,0 +1,91 @@
+/* pages/profile/profile.wxss */
+/* profile头部样式 */
+.profile-header{
+  width:100%;
+  background-color: black;
+}
+.profile-header .user-info{
+  display: flex;
+  padding: 30rpx;
+}
+.user-info image{
+  max-width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.user-info .user-name{
+  height:150rpx;
+  line-height: 150rpx;
+  flex: 1;
+  color: white;
+}
+.vip{
+  height: 150rpx;
+  line-height: 150rpx;
+  font-size: 24rpx;
+  color: 		#A9A9A9;
+}
+.vip .iconfont{
+  font-size: 24rpx;
+}
+/* 导航列表样式 */
+.user-nav{
+  display: flex;
+  padding: 30rpx;
+  color: white;
+}
+.user-nav-item{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  align-items: center;
+  font-size: 24rpx;
+}
+.user-nav-item .iconfont{
+  font-size: 50rpx;
+}
+.out{
+  width: 100%;
+  height: 30rpx;
+  background-color: black;
+}
+.in{
+  width: 100%;
+  height: 100%;
+  border-radius: 30rpx 30rpx 0 0;
+  background-color: white;
+}
+
+
+/* profile-content的样式 */
+.profile-content{
+  width: 100%;
+  padding: 20rpx;
+}
+.profile-content-list{
+  width: 95%;
+  /* background-color:#A9A9A9; */
+}
+.list-item{
+  width:100%;
+  /* height: 100rpx; */
+}
+.list-item .profile-scroll{
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  margin: 20rpx 0;
+}
+.profile-scroll-item image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+}
+.nodata{
+  width: 200rpx;
+  height: 200rpx;
+  line-height: 200rpx;
+  margin: 0 auto;
+}

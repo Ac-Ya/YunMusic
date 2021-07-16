@@ -1,0 +1,105 @@
+<!--pages/index/index.wxml-->
+  <view>
+    <!-- 轮播图区域 -->
+    <swiper class="banners" indicator-dots="true" indicator-color="rgba()" autoplay>
+      <swiper-item wx:for="{{bannersList}}" wx:key="bannerId">
+        <image src="{{item.pic}}"></image>
+      </swiper-item>
+    </swiper>
+
+    <!-- 导航栏区域 -->
+    <view class="nav">
+      <view class="nav-item" bindtap="torecommendsong">
+        <text class="iconfont icon-tuijian"></text>
+        <text>每日推荐</text>
+      </view>
+      <view class="nav-item">
+        <text class="iconfont icon-gedan"></text>
+        <text>歌单</text>
+      </view>
+      <view class="nav-item">
+        <text class="iconfont icon-paihangbang"></text>
+        <text>排行榜</text>
+      </view>
+      <view class="nav-item">
+        <text class="iconfont icon-diantai  "></text>
+        <text>电台</text>
+      </view>
+      <view class="nav-item">
+        <text class="iconfont icon-zhibo"></text>
+        <text>直播</text>
+      </view>
+    </view>
+
+    <!-- 推荐区域 -->
+    <view class="recommond">
+      <view class="recommond-header">
+        <text class="title">推荐歌曲</text>  
+        <view>
+          <text>为你精心推荐</text>
+          <text class="more">查看更多</text>
+        </view>
+      </view>
+      <scroll-view class="recommond-content" enable-flex="true" scroll-x="true">
+        <view class="content-item" wx:for="{{recommondsList}}" wx:key="id">
+          <image src="{{item.picUrl}}"></image>
+          <text>{{item.name}}</text>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 排行榜区域 -->
+    <view class="ranking-list">
+      <view class="ranking-list-header">
+        <text class="title">排行榜</text>  
+        <view>
+          <text>热歌风向标</text>
+          <text class="more">查看更多</text>
+        </view>
+      </view>
+      <swiper class="ranking-list-content" next-margin="30rpx">
+          <swiper-item class="ranking-list-item" wx:for="{{ranksList}}" wx:key="index">
+              <view class="ranking-list-title">
+                <text>{{item.name}}</text>
+                <text class="iconfont icon-icon_on_the_right"></text>
+              </view>
+              <view wx:for="{{item.tracks}}" wx:for-item="music" wx:key="id">
+                <view class="music-item">
+                  <image src="{{music.al.picUrl}}"></image>
+                  <text class="count">{{index+1}}</text>
+                  <text class="name">{{music.name}}</text>
+                </view>
+              </view>  
+          </swiper-item>
+      </swiper>
+    </view>
+    <!-- <view>
+      sdsds
+    </view>
+    <view>
+      sdsds
+    </view>
+    <view>
+      sdsds
+    </view>
+    <view>
+      sdsds
+    </view>
+    <view>
+      sdsds
+    </view>
+    <view>
+      sdsds
+    </view>
+    <view>
+      sdsds
+    </view>
+    <view>
+      sdsds
+    </view>
+    <view>
+      sdsds
+    </view> -->
+  </view>
+
+

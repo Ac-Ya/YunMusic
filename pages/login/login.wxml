@@ -1,0 +1,26 @@
+<!--pages/login/login.wxml-->
+<view>
+  <view class="pure_top">
+    <view class="login-img">
+      <image src="/static/login/touxiang.png"></image>
+    </view>
+  </view>
+  <view class="login-from">
+    <view class="inputView">
+      <image src="/static/login/name.png" class="nameImage"></image>
+      <label class="loginLab">手机号</label> 
+      <input class="inputText" placeholder="请输入手机号" bindchange="phoneChange" />
+    </view>
+  <view class="line"></view>  
+    <view class="inputView">
+      <image class="keyImage" src="/static/login/pwd.png"></image> 
+      <label class="loginLab">密码</label> 
+      <input class="inputText" password="true" placeholder="请输入密码" bindchange="passwordChange" /> 
+    </view>
+  </view>
+  <button class="login-btn" bindtap="loginClick">登录</button>
+  <view class="login-resigner">
+    <text bindtap="tclick" class="tourists-trial">游客试用</text> | <text>注册</text>
+  </view>
+  
+</view>

@@ -1,0 +1,67 @@
+<!--pages/video/video.wxml-->
+<view class="videoContainer">
+  <view class="header">
+    <!-- 头部搜索框 假的 点击跳转到搜索页面 -->
+    <view class="search">
+      <text class="iconfont icon-sousuokuang"></text>
+      <text>搜索</text>
+    </view>
+  </view>
+
+  <!-- 导航栏区域 -->
+  <scroll-view 
+  scroll-with-animation="true" scroll-into-view="{{'s'+navId}}" 
+  class="nav-scroll" scroll-x enable-flex>
+    <view class="nav-item active" wx:for="{{videoGroupList}}" wx:key="id" id="{{'s'+item.id}}">
+      <view class="nav-content {{navId === item.id ? 'active': '' }}" bindtap="changNav" id="{{item.id}}">{{item.name}}</view>
+    </view>
+  </scroll-view>
+
+  <!--视频列表区域  -->
+  <scroll-view scroll-y enable-flex refresher-triggered="{{isRefresher}}" 
+  refresher-enabled
+  bindscrolltolower="handleToLower"
+  bindrefresherrefresh="handleRefresher"
+  class="video-scroll">
+    <view class="scroll-item" wx:for="{{videoList}}" wx:key="id">
+      <!-- 视频信息区域 -->
+      <view class="video-footer"> 
+        <image class="avatar" src="{{item.data.creator.avatarUrl}}"></image>
+        <text class="name">{{item.data.creator.nickname}}</text>
+        <view class="comments_praised">
+            <text class="item">
+              <text class="iconfont icon-xihuan"></text>
+              <text class="count">{{item.data.praisedCount}}</text>
+            </text>
+            <text class="item">
+              <text class="iconfont icon-pinglun"></text>
+              <text class="count">{{item.data.commentCount}}</text>
+            </text>
+            <button open-type="share" class="item btn">
+              <text class="iconfont icon-dashujukeshihuaico-"></text>
+            </button>
+        </view>
+      </view>
+      <!-- 视频区域 -->
+      <!-- <view class="video-item" > -->
+      <view class="video-item">
+        <video src="{{item.data.urlInfo.url}}" 
+        object-fit="fill" 
+        show-fullscreen-btn
+        bindplay="handlePlay"
+        id="{{item.data.vid}}"
+        poster="{{item.data.coverUrl}}"
+        wx:if="{{displayVideo == item.data.vid}}"
+        autoplay="{{isAuto}}" 
+        ></video>
+        <image wx:else src="{{item.data.coverUrl}}" bindtap="handlePlay" id="{{item.data.vid}}"></image>
+      </view>
+          <!-- 视频title区域 -->
+      <view class="video-content">
+          {{item.data.title}}
+      </view>
+      <view class="border"></view>
+    </view>
+  </scroll-view>
+</view>
+
