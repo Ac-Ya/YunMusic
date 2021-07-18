@@ -112,6 +112,15 @@
     transform:rotate(360deg);
   }
 }
+.animationPause{
+  animation-play-state: paused;
+  -webkit-animation-play-state:paused; /* Safari 和 Chrome */
+}
+.aninationRunning{
+  animation-play-state: running;
+  -webkit-animation-play-state:running; /* Safari 和 Chrome */
+}
+
 
 
 /* 底部播放控件 */

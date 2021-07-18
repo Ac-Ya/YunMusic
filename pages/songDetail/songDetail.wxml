@@ -16,17 +16,18 @@
       <view class="circle"></view>
       <image src="/static/song/needle.png" class="{{isplay ? 'play' : ''}}"></image>
     </view>
-    <view class="cipan {{isplay ? 'diskAnimation' : ''}}">
+    <!-- {{isplay ? 'diskAnimation' : ''}} -->
+    <view class="cipan diskAnimation {{isplay ? 'animationRunning' : 'animationPause'}}">
       <disk>
-        <image src='{{songDetailData.al.picUrl}}'></image>
-      </disk>
+        <image src='{{songDetailData.al.picUrl}}' lazy-load="true"></image>
+      </disk> 
     </view>
   </view>  
   <!-- 设置底部播放控件 -->
   <view class="songDetail_control">
     <text class="iconfont icon-suijibofang"></text>
     <text class="iconfont icon-shangyiqu"></text>
-    <text class="iconfont {{isplay ? 'icon-bofang3' : 'icon-zanting1'}} big"></text>
+    <text class="iconfont {{isplay ? 'icon-zanting1' : 'icon-bofang3'}} big" bindtap="handleMusicPlay"></text>
     <text class="iconfont icon-xiayiqu"></text>
     <text class="iconfont icon-bofangliebiao"></text>    
   </view>

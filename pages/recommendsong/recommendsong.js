@@ -11,6 +11,7 @@ Page({
     day:0,
     month:0,
     recomendsongList:[],//推荐歌曲列表
+    // buttonClicked: false
   },
 
   /**
@@ -50,6 +51,7 @@ Page({
 
   //跳转到歌曲详情
   toSongDetail(event){
+    
     let song = event.currentTarget.dataset.song
     console.log(event);
 
@@ -59,6 +61,7 @@ Page({
     wx.navigateTo({
       url: "/pages/songDetail/songDetail?musicId="+song.id
     })
+
   },
 
 
