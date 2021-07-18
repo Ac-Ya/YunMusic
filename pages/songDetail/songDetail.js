@@ -1,6 +1,7 @@
 // pages/songDetail/songDetail.js
 import {request} from "../../utils/request"
 var appInstance = getApp()
+var globlalData = appInstance.globlalData
 Page({
 
   /**
@@ -20,69 +21,78 @@ Page({
     //获取路由传过来的id
     let musicId = options.musicId
     appInstance.globlalData.musicId = musicId
-    this.getSongDetailData(musicId)
-    this.getMusicUrl(musicId)
-    
+    //获取音频信息
+    this.getMusicInfo(musicId)
+    // console.log(globlalData.backgroundAudioManager);
 
-
-  },
-
-  //获取歌曲详情数据
-  async getSongDetailData(id){
-    let res = await request("/song/detail",{ids:id})
-    // console.log(res);
-    this.setData({
-      songDetailData:res.data.songs[0]
+    //设置后台播放和暂停的事件
+    globlalData.backgroundAudioManager.onPlay(()=>{
+      console.log("全局播放");
+      this.changeState(true)
     })
+    globlalData.backgroundAudioManager.onPause(()=>{
+      console.log("全局暂停");
+      this.changeState(false)
+    })
+
   },
-  //获取音频链接
-  async getMusicUrl(id){
-    let res = await request("/song/url",{id})
-    // console.log(res);
-    let musicUrl = res.data.data[0].url
+
+  //获取歌曲详情数据，获取音频链接
+  async getMusicInfo(id){
+    let res1 = await request("/song/detail",{ids:id})
+    let songDetailData = res1.data.songs[0]
+
+    let res2 = await request("/song/url",{id})
+    let musicUrl = res2.data.data[0].url
     this.setData({
+      songDetailData,
       musicUrl
     })
-    this.musicPlay()
+    this.musicPlay(musicUrl,songDetailData.name)
   },
 
   //绑定在播放/暂停按钮   播放/暂停动画 歌曲 的回调函数
   handleMusicPlay(){
-    let isplay = !this.data.isplay
+    let isplay = !this.data.isplay;
     this.setData({
       isplay
     })
     this.musicPlayControl(isplay)
+    
   },
-
-
+  //改变播放状态
+  changeState(isplay){
+    this.setData({
+      isplay
+    })
+  },
 
   //背景音频 BackgroundAudioManager 实例，可通过 wx.getBackgroundAudioManager 获取
   //控制音乐播放/暂停的功能函数
   musicPlayControl(isplay){
     if(isplay){
-      appInstance.globlalData.backgroundAudioManager.play()
-      appInstance.globlalData.backgroundAudioManager.onPlay(() =>{
-        this.setData({isplay:true})
+      globlalData.backgroundAudioManager.play()
+      globlalData.backgroundAudioManager.onPlay(()=>{
+        this.changeState(isplay)
       })
     }else{
-      appInstance.globlalData.backgroundAudioManager.pause()
-      appInstance.globlalData.backgroundAudioManager.onPause(()=>{
-        this.setData({
-          isplay:false
-        })
+      globlalData.backgroundAudioManager.pause()
+      globlalData.backgroundAudioManager.pause(()=>{
+        this.changeState(isplay)
       })
-    }
+    }     
   },
-  musicPlay(){
-      let backgroundAudioManager = wx.getBackgroundAudioManager()
-      backgroundAudioManager.title = this.data.songDetailData.name
-      backgroundAudioManager.src = this.data.musicUrl
-      appInstance.globlalData.backgroundAudioManager = backgroundAudioManager
-      // console.log(appInstance);
+  //设置音频链接
+  musicPlay(musicUrl,musicName){   
+    globlalData.backgroundAudioManager.src = musicUrl
+    globlalData.backgroundAudioManager.title = musicName
   },
-    
-    
+  //回退页面
+  back(){
+    wx.navigateBack({
+      delta:1
+    })
+  },
 
 
 
