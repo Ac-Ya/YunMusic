@@ -27,11 +27,11 @@ Page({
 
     //设置后台播放和暂停的事件
     globlalData.backgroundAudioManager.onPlay(()=>{
-      console.log("全局播放");
+      // console.log("全局播放");
       this.changeState(true)
     })
     globlalData.backgroundAudioManager.onPause(()=>{
-      console.log("全局暂停");
+      // console.log("全局暂停");
       this.changeState(false)
     })
 
