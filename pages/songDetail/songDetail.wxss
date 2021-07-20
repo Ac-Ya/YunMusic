@@ -121,6 +121,56 @@
   -webkit-animation-play-state:running; /* Safari 和 Chrome */
 }
 
+/* 歌曲进度条样式 */
+.musicProgress{
+  position:absolute;
+  bottom: 200rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  width: 680rpx;
+  height: 80rpx;
+  /* border: 1px solid red; */
+  display: flex;
+}
+.currentTime,
+.totalTime{
+  color:#fff;
+  font-size: 26rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+/* 总进度条样式 */
+.progress-box{
+  position: relative;
+  width: 490rpx;
+  height: 4rpx;
+  background-color:	#696969;
+  margin: auto 20rpx;
+  
+}
+/* 实时进度条样式 */
+.realtime-progress{
+  position: absolute;
+  /* width: 100rpx; */
+  height: 4rpx;
+  /*设置两头为半圆 , border-radius 为高度的一半 */
+  border-radius: 2rpx;
+  background-color: #fff;
+  z-index: 1;
+}
+.circle-progress{
+  position: absolute;
+  top:-4rpx;
+  right:-12rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+
+
+
 
 
 /* 底部播放控件 */

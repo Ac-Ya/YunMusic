@@ -1,7 +1,7 @@
 <!--pages/songDetail/songDetail.wxml-->
 <view class="songDetailContainer">
   <view class="bg_img" style="background-image:url('{{songDetailData.al.picUrl}}')"></view>
-  <view class="back">
+  <view class="back" bindtap="back">
     <text class="iconfont icon-zuo"></text>
   </view>
  <!--设置头部 歌曲名和歌手 -->
@@ -23,6 +23,19 @@
       </disk> 
     </view>
   </view>  
+
+  <!-- 歌曲进度条 -->
+  <view class="musicProgress">
+    <text class="currentTime">{{currentTime}}</text>
+    <!-- 总进度条 -->
+    <view class="progress-box">
+    <!-- 实时进度条 -->
+      <view class="realtime-progress" style="width:{{currentWidth + 'rpx'}}">
+        <view class="circle-progress"></view>
+      </view>
+    </view>
+    <text class="totalTime">{{totalTime}}</text>
+  </view>
   <!-- 设置底部播放控件 -->
   <view class="songDetail_control">
     <text class="iconfont icon-suijibofang"></text>

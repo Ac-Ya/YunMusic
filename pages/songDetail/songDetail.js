@@ -1,5 +1,7 @@
 // pages/songDetail/songDetail.js
 import {request} from "../../utils/request"
+import {formatMusicTime} from "../../utils/util"
+import PubSub from "pubsub-js"
 var appInstance = getApp()
 var globlalData = appInstance.globlalData
 Page({
@@ -11,13 +13,15 @@ Page({
     isplay:true,   //用于控制磁盘和指针动画显示
     songDetailData:null,  //歌曲详情
     musicUrl:'',//用于保存音频链接
+    currentTime:"00:00",  //用于保存歌曲实时播放的时间
+    totalTime:"00:00",    //用于保存歌曲的总时长
+    currentWidth:0,       //用于保存实时进度条的长度
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options);
     //获取路由传过来的id
     let musicId = options.musicId
     appInstance.globlalData.musicId = musicId
@@ -35,18 +39,37 @@ Page({
       this.changeState(false)
     })
 
+    //实时监听歌曲播放进度
+    globlalData.backgroundAudioManager.onTimeUpdate(()=>{
+      //实时获取歌曲播放的时间
+      let currentTime = globlalData.backgroundAudioManager.currentTime
+      // console.log(currentTime);
+      //更新当前时间
+      
+      //更新实时进度条的长度  当前宽度 = （当前时间/总时间）* 总宽度
+      let currentWidth = (globlalData.backgroundAudioManager.currentTime / globlalData.backgroundAudioManager.duration) * 490
+      this.setData({
+        currentTime:formatMusicTime(currentTime * 1000),
+        currentWidth
+      })
+
+    })
+
+
   },
 
   //获取歌曲详情数据，获取音频链接
   async getMusicInfo(id){
     let res1 = await request("/song/detail",{ids:id})
     let songDetailData = res1.data.songs[0]
+    let totalTime = formatMusicTime(songDetailData.dt)
 
     let res2 = await request("/song/url",{id})
     let musicUrl = res2.data.data[0].url
     this.setData({
       songDetailData,
-      musicUrl
+      musicUrl,
+      totalTime
     })
     this.musicPlay(musicUrl,songDetailData.name)
   },
