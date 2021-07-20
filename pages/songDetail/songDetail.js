@@ -16,26 +16,27 @@ Page({
     currentTime:"00:00",  //用于保存歌曲实时播放的时间
     totalTime:"00:00",    //用于保存歌曲的总时长
     currentWidth:0,       //用于保存实时进度条的长度
+    index:0,//当前音乐在列表中的位置
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let {musicId,index} = JSON.parse(options.musicInfo)
+    this.setData({
+      index
+    })
     //获取路由传过来的id
-    let musicId = options.musicId
     appInstance.globlalData.musicId = musicId
     //获取音频信息
     this.getMusicInfo(musicId)
-    // console.log(globlalData.backgroundAudioManager);
 
     //设置后台播放和暂停的事件
     globlalData.backgroundAudioManager.onPlay(()=>{
-      // console.log("全局播放");
       this.changeState(true)
     })
     globlalData.backgroundAudioManager.onPause(()=>{
-      // console.log("全局暂停");
       this.changeState(false)
     })
 
@@ -54,6 +55,13 @@ Page({
       })
 
     })
+
+    //监听音频自然播放结束
+    globlalData.backgroundAudioManager.onEnded(()=>{
+      //播放下一首歌
+      this.switchSong(null,'next')
+    })
+
 
 
   },
@@ -115,6 +123,34 @@ Page({
     wx.navigateBack({
       delta:1
     })
+  },
+
+  //切换歌曲
+  switchSong(event,type){
+    //获取点击的类型时"pre" / "next"
+    if(event){
+      type = event.currentTarget.dataset.id
+    }
+    let index = this.data.index   //获取当前id           
+    if(type === 'pre'){
+      index -= 1 
+      index < 0 ? (index = globlalData.recommendMusicIdList.length-1) : index
+      this.getMusicInfo(globlalData.recommendMusicIdList[index].id)
+      this.setData({
+        index,
+        isplay:false
+      })
+    }else{
+      index += 1
+      index >= globlalData.recommendMusicIdList.length ? (index = 0) :index
+      this.getMusicInfo(globlalData.recommendMusicIdList[index].id)
+      //修改完index后记得更新index
+      this.setData({
+        index,
+        isplay:false
+      })
+    }
+
   },
 
 

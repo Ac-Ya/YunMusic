@@ -2,6 +2,10 @@
 //用于格式化事件的函数
 import {formatNumber} from "../../utils/util"
 import {cookieRequest} from "../../utils/request"
+import PubSub from "pubsub-js"
+
+var appInstance = getApp()
+var globlalData = appInstance.globlalData
 Page({
 
   /**
@@ -39,30 +43,47 @@ Page({
     })
     //获取推荐歌曲列表数据
     this.getRecommendSongList()
+    // wx.nextTick(()=>{
+    //   console.log(this.data.recomendsongList);
+    // })
+   
   },
   //获取推荐列表
   async getRecommendSongList(){
     const res = await cookieRequest("/recommend/songs")
     console.log(res);
+    
     this.setData({
       recomendsongList:res.data.recommend
     })
+    let recommendMusicIdList = []
+    res.data.recommend.forEach((item,index,arr)=>{
+      recommendMusicIdList.push({id:item.id,index})
+    })
+    globlalData.recommendMusicIdList = recommendMusicIdList
+    // console.log(globlalData.recommendMusicIdList);
+    
   },
-
+  
   //跳转到歌曲详情
   toSongDetail(event){
-    
+    // console.log(event)
     let song = event.currentTarget.dataset.song
-    console.log(event);
 
+    // console.log(song);
     //路由跳转传参 通过query
     //【注】原生小程序中路由传参有长度限制，如果参数过长会自动接去掉
     //因为在songDetail页是通过id来获取数据的所以可以直接传入id
     wx.navigateTo({
-      url: "/pages/songDetail/songDetail?musicId="+song.id
+      url: "/pages/songDetail/songDetail?musicInfo="+song
     })
 
   },
+
+
+
+
+
 
 
 

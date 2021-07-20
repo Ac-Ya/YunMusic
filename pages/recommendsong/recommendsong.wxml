@@ -27,7 +27,7 @@
     
     <scroll-view class="recommendsong_scroll" scroll-y>
       <view class="scroll_item" wx:for="{{recomendsongList}}" wx:key="id" 
-      bindtap="toSongDetail"  data-song="{{item}}">
+      bindtap="toSongDetail"  data-song='{"musicId":{{item.id}},"index":{{index}}}'>
         <image src="{{item.album.picUrl}}" lazy-load="true"></image>
         <view class="music_info">
           <text class="musicname">{{item.name}}</text>
