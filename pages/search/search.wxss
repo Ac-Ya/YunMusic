@@ -1,0 +1,92 @@
+/* pages/search/search.wxss */
+.searchContainer{
+  /* padding: 0 30rpx; */
+}
+/*头部搜索框  */
+.search_header{
+  display: flex;
+  padding: 20rpx 30rpx;
+
+}
+.search_hea der .cancel{
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+}
+.searchInput{
+  flex: 1;
+  display: flex;
+  border-radius: 30rpx;
+}
+.searchInput .iconfont{
+  height: 60rpx;
+  width: 40rpx;
+  font-size: 40rpx;
+  line-height: 60rpx;
+}
+.searchInput input{
+  flex: 1;
+  height: 60rpx;
+  border-bottom: 2rpx solid black;
+  margin-right: 20rpx;
+}
+
+
+/* 热搜榜样式 */
+.search_hot{
+  height: calc(100vh - 100rpx);
+}
+.search_hot .hotSearch{
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.hot_list{
+  display: flex;
+  flex-direction: column;
+  padding: 0 30rpx;
+}
+
+.hot_listItem{
+  margin: 16rpx 0;
+  width: 100%;
+  display: flex;
+  /* border: 1rpx solid red; */
+}
+.hot_listItem .index{
+  /* width:60rpx; */
+  height:80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  margin-right: 20rpx;
+}
+.top_three{
+  color:#DD001B;
+}
+
+.hot_listItem .hot_music{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+/* 文本加粗 */
+.hot_music .music_name{
+  font-weight:bold
+}
+.hot_music .iconImg{
+  width: 35rpx;
+  height: 25rpx;
+  margin-left: 10rpx;
+}
+.hot_music .music_desc{
+  width: 450rpx;
+  font-size: 26rpx;
+  color:	#808080;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hot_num{
+  font-size: 26rpx;
+  color:#808080;
+}

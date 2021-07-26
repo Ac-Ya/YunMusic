@@ -1,0 +1,28 @@
+<view class="searchContainer">
+  <!-- 搜索界面头部 -->
+  <view class="search_header">
+    <view class="searchInput">
+      <text class="iconfont icon-sousuokuang"></text>
+      <input type="text" placeholder="你好！"/>
+    </view>
+    <text class="cancel">取消</text>
+  </view>
+  <!-- 搜索界面 搜索历史 -->
+
+  <!-- 搜索界面热搜榜 -->
+  <scroll-view class="search_hot" scroll-y="true" enable-flex="true">
+    <view class="hotSearch">热搜榜</view>
+    <view class="hot_list">
+      <view class="hot_listItem" wx:for="{{hotSearch}}" wx:key="score">
+        <text class="index {{index <= 2? 'top_three':''}}">{{index+1}}</text>
+        <view class="hot_music">
+          <view class="{{index <= 2 ? 'music_name':''}}">{{item.searchWord}}
+            <image class="iconImg" wx:if="{{item.iconUrl}}" src="{{item.iconUrl}}"></image>
+          </view>
+          <view class="music_desc">{{item.content}}</view>
+        </view>
+        <text class="hot_num">{{item.score}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>
