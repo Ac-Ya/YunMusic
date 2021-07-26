@@ -1,9 +1,17 @@
 <!--pages/index/index.wxml-->
-  <view>
+  <view class="indexContainer">
+    <view class="header">
+    <!-- 头部搜索框 假的 点击跳转到搜索页面 -->
+    <view class="search">
+      <text class="iconfont icon-sousuokuang"></text>
+      <text>搜索</text>
+    </view>
+  </view>
+  
     <!-- 轮播图区域 -->
     <swiper class="banners" indicator-dots="true" indicator-color="rgba()" autoplay>
       <swiper-item wx:for="{{bannersList}}" wx:key="bannerId">
-        <image src="{{item.pic}}"></image>
+        <image src="{{item.pic}}" lazy-load="true"></image>
       </swiper-item>
     </swiper>
 
@@ -42,7 +50,7 @@
       </view>
       <scroll-view class="recommond-content" enable-flex="true" scroll-x="true">
         <view class="content-item" wx:for="{{recommondsList}}" wx:key="id">
-          <image src="{{item.picUrl}}"></image>
+          <image src="{{item.picUrl}}" lazy-load="true"></image>
           <text>{{item.name}}</text>
         </view>
       </scroll-view>
@@ -65,7 +73,7 @@
               </view>
               <view wx:for="{{item.tracks}}" wx:for-item="music" wx:key="id">
                 <view class="music-item">
-                  <image src="{{music.al.picUrl}}"></image>
+                  <image src="{{music.al.picUrl}}" lazy-load="true"></image>
                   <text class="count">{{index+1}}</text>
                   <text class="name">{{music.name}}</text>
                 </view>
@@ -73,33 +81,6 @@
           </swiper-item>
       </swiper>
     </view>
-    <!-- <view>
-      sdsds
-    </view>
-    <view>
-      sdsds
-    </view>
-    <view>
-      sdsds
-    </view>
-    <view>
-      sdsds
-    </view>
-    <view>
-      sdsds
-    </view>
-    <view>
-      sdsds
-    </view>
-    <view>
-      sdsds
-    </view>
-    <view>
-      sdsds
-    </view>
-    <view>
-      sdsds
-    </view> -->
   </view>
 
 

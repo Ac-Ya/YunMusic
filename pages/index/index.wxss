@@ -1,4 +1,21 @@
-
+/* 头部搜索框 */
+.indexContainer .header{
+  width: 100%;
+  padding-bottom: 20rpx;
+}
+.header .search{
+  /* width: 94%; */
+  width:680rpx;
+  height: 60rpx;
+  margin: 0 auto;
+  border-radius: 30rpx;
+  box-shadow: 6rpx 8rpx 8rpx 	#DCDCDC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: 	#A9A9A9;
+}
 
 /* 轮播图样式 */
 .banners{
