@@ -2,12 +2,11 @@
 
 
 /* 头部搜索框 */
-.videoContainer .header{
+/* .videoContainer .header{
   width: 100%;
   padding: 20rpx 0;
 }
 .header .search{
-  /* width: 94%; */
   width:680rpx;
   height: 60rpx;
   margin: 0 auto;
@@ -18,7 +17,7 @@
   justify-content: center;
   font-size: 28rpx;
   color: 	#A9A9A9;
-}
+} */
 
 /* 导航栏区域 */
 .nav-scroll{

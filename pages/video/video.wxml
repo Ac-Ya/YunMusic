@@ -1,12 +1,12 @@
 <!--pages/video/video.wxml-->
 <view class="videoContainer">
-  <view class="header">
-    <!-- 头部搜索框 假的 点击跳转到搜索页面 -->
+  <!-- <view class="header">
+     头部搜索框 假的 点击跳转到搜索页面
     <view class="search">
       <text class="iconfont icon-sousuokuang"></text>
       <text>搜索</text>
     </view>
-  </view>
+  </view> -->
 
   <!-- 导航栏区域 -->
   <scroll-view 
@@ -54,7 +54,11 @@
         wx:if="{{displayVideo == item.data.vid}}"
         autoplay="{{isAuto}}" 
         ></video>
-        <image wx:else src="{{item.data.coverUrl}}" bindtap="handlePlay" id="{{item.data.vid}}"></image>
+        <image wx:else 
+        src="{{item.data.coverUrl}}" 
+        bindtap="handlePlay" 
+        id="{{item.data.vid}}"
+        lazy-load="true"></image>
       </view>
           <!-- 视频title区域 -->
       <view class="video-content">
