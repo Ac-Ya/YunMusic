@@ -3,17 +3,42 @@
   <view class="search_header">
     <view class="searchInput">
       <text class="iconfont icon-sousuokuang"></text>
-      <input type="text" placeholder="你好！"/>
+      <input type="text"  value="{{searchContent}}" placeholder="{{defaultKeyWord}}" bindinput="handleInput"/>
+      <text class="iconfont icon-quxiao delete" hidden="{{!searchContent.length}}" bindtap="deleteValue"></text>
     </view>
-    <text class="cancel">取消</text>
+    <text class="cancel" bindtap="handleCancel">取消</text>
   </view>
+
+  <!-- 搜索列表 -->
+  <view class="search_list" wx:if="{{searchContent.length}}" >
+    <view class="search_list_item">
+      <text class="content">搜索"{{searchContent}}"</text>
+    </view>
+    <view class="search_list_item" wx:for="{{searchList}}" wx:key="index">
+      <text class="iconfont icon-sousuokuang"></text>
+      <text class="content" bindtap="handleSearchList" data-content="{{item}}">{{item.name}}</text>
+    </view>
+  </view>
+
+
   <!-- 搜索界面 搜索历史 -->
+  <view class="search_history" hidden="{{!historyRecord.length}}">
+    <view class="title">
+      <text class="text">历史记录</text>
+      <text class="iconfont icon-iconfont-shanchu" bindtap="deleteHistory"></text>
+    </view>
+    <scroll-view class='scroll_history' scroll-x enable-flex="true">
+      <view class="historyItem"  wx:for="{{historyRecord}}" wx:key="index">
+        {{item}}
+      </view>
+    </scroll-view>
+  </view>
 
   <!-- 搜索界面热搜榜 -->
-  <scroll-view class="search_hot" scroll-y="true" enable-flex="true">
+  <scroll-view class="search_hot {{historyRecord.length ? 'scroll_height' : ''}}" scroll-y="true" enable-flex="true" >
     <view class="hotSearch">热搜榜</view>
     <view class="hot_list">
-      <view class="hot_listItem" wx:for="{{hotSearch}}" wx:key="score">
+      <view class="hot_listItem" wx:for="{{hotSearch}}" wx:key="score" data-content="{{item}}" bindtap="handleHotSearch">
         <text class="index {{index <= 2? 'top_three':''}}">{{index+1}}</text>
         <view class="hot_music">
           <view class="{{index <= 2 ? 'music_name':''}}">{{item.searchWord}}
