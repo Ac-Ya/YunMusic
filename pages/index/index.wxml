@@ -2,7 +2,7 @@
   <view class="indexContainer">
     <view class="header">
     <!-- 头部搜索框 假的 点击跳转到搜索页面 -->
-    <view class="search">
+    <view class="search" bindtap="toSearch">
       <text class="iconfont icon-sousuokuang"></text>
       <text>搜索</text>
     </view>
@@ -60,10 +60,7 @@
     <view class="ranking-list">
       <view class="ranking-list-header">
         <text class="title">排行榜</text>  
-        <view>
-          <text>热歌风向标</text>
-          <text class="more">查看更多</text>
-        </view>
+        <text class="more">查看更多</text>
       </view>
       <swiper class="ranking-list-content" next-margin="30rpx">
           <swiper-item class="ranking-list-item" wx:for="{{ranksList}}" wx:key="index">

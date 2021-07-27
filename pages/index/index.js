@@ -54,13 +54,21 @@ Page({
     }
     
   },
-
+  //跳转到推荐歌曲页面
   torecommendsong(){
     wx.navigateTo({
       url: '/pages/recommendsong/recommendsong',
     })
 
   },
+
+  //跳转到搜索页面
+  toSearch(){
+    wx.navigateTo({
+      url: '/pages/search/search',
+    })
+  },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
