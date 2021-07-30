@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "disk":"/components/disk/disk"
+    "disk":"/components/disk/disk",
+    "song-control":"/components/songControl/songControl"
   },
   "navigationStyle": "custom"
 

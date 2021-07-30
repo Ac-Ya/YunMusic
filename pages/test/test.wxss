@@ -1,0 +1,47 @@
+.songControlContainer{
+  position: absolute;
+  bottom: 100rpx;
+  width: 100%;
+  height: 100rpx;
+  /* border: 1rpx solid red; */
+  display: flex;
+  box-shadow: 0 0 5rpx #A9A9A9;
+
+}
+.songControlContainer .left{
+  flex: 1;
+  font-size: 26rpx;
+}
+.songControlContainer .left,
+.songControlContainer .right{
+  height: 100rpx;
+  display: flex;
+  line-height: 100rpx;
+}
+.left .songImg{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: auto 10rpx;
+
+  
+}
+.ImgAnimation{
+  animation: mymove 10s linear infinite;
+  animation-delay: 0.8s;
+}
+@keyframes mymove
+{
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+
+.right .iconfont{
+  margin-right: 30rpx;
+  font-size: 50rpx;
+  color: #DD001B;
+}

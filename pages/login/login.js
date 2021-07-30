@@ -55,7 +55,7 @@ Page({
 
     //后端验证 发送请求携带phone和password
     loginRequest("/login/cellphone",{phone:this.data.phone,password:this.data.password}).then(value=>{
-      console.log(value);
+      // console.log(value);
       if(value.data.code !== 200){
         wx.showToast({
           title: value.data.msg,
@@ -72,7 +72,7 @@ Page({
         })
         //登录成功后跳转到个人中心页面
         wx.reLaunch({
-          url: '/pages/profile/profile',
+          url: '/pages/index/index',
         })
       }
       

@@ -38,10 +38,11 @@
   </view>
   <!-- 设置底部播放控件 -->
   <view class="songDetail_control">
-    <text class="iconfont icon-suijibofang"></text>
+    <text class="iconfont {{switchMode[switchIndex]}}" bindtap="switchMode"></text>
     <text class="iconfont icon-shangyiqu" data-id="pre" bindtap="switchSong"></text>
     <text class="iconfont {{isplay ? 'icon-zanting1' : 'icon-bofang3'}} big" bindtap="handleMusicPlay"></text>
     <text class="iconfont icon-xiayiqu" data-id="next" bindtap="switchSong"></text>
     <text class="iconfont icon-bofangliebiao"></text>    
   </view>
+
 </view>

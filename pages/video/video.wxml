@@ -67,5 +67,6 @@
       <view class="border"></view>
     </view>
   </scroll-view>
+  <song-control></song-control>
 </view>
 

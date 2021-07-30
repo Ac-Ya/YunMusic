@@ -111,4 +111,7 @@
   -webkit-box-orient: vertical; */
   border-bottom: 2rpx solid #DCDCDC;
 }
-
+.song-control{
+  position: fixed;
+  bottom: 120rpx;
+}

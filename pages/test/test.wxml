@@ -1,0 +1,12 @@
+<!--pages/test/test.wxml-->
+<view class="songControlContainer">
+  <!-- 歌曲底部控制组件 -->
+  <view class="left">
+    <image src="../../static/indexImg/55018946.jpg" class="songImg ImgAnimation"></image>
+    <text class="songName">不如</text>
+  </view>
+  <view class="right">
+    <text class="iconfont icon-zanting"></text>
+    <text class="iconfont icon-bofangliebiao"></text>
+  </view>
+</view>

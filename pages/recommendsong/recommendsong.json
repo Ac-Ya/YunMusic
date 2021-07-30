@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "song-control":"/components/songControl/songControl"
+  },
   "navigationBarBackgroundColor": "#90CAFB",
   "navigationBarTitleText": "推 荐 歌 曲",
   "navigationBarTextStyle": "white"

@@ -121,7 +121,7 @@
 /* 排行榜内容区 */
 .ranking-list-content{
   width: 98%;
-  height: 550rpx;
+  height: 630rpx;
   /* background-color:	#F5F5F5; */
   border-radius: 20rpx;
 }
@@ -155,4 +155,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.song-control{
+  position: fixed;
+  bottom: 120rpx;
 }

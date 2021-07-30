@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "song-control":"/components/songControl/songControl"
+  },
   "navigationBarBackgroundColor": "#000",
   "navigationBarTitleText": "个人中心",
   "navigationBarTextStyle": "white"

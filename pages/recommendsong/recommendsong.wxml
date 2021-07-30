@@ -13,7 +13,7 @@
     <view class="in"></view>
   </view>
 <!--设置内容区域 -->
-  <view class="content">
+  <view class="content ">
     <view class="content_controls"> 
       <view class="play">
         <text class="iconfont icon-bofang"></text>
@@ -38,5 +38,6 @@
     </scroll-view>
   </view>
 
+  <song-control></song-control>
 
 </view>

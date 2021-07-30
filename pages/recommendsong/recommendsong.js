@@ -15,7 +15,7 @@ Page({
     day:0,
     month:0,
     recomendsongList:[],//推荐歌曲列表
-    // buttonClicked: false
+    recommendsongImg:[]
   },
 
   /**
@@ -51,10 +51,11 @@ Page({
   //获取推荐列表
   async getRecommendSongList(){
     const res = await cookieRequest("/recommend/songs")
-    console.log(res);
-    
+
+
+
     this.setData({
-      recomendsongList:res.data.recommend
+      recomendsongList:res.data.recommend,
     })
     let recommendMusicIdList = []
     res.data.recommend.forEach((item,index,arr)=>{
@@ -62,6 +63,7 @@ Page({
     })
     globlalData.recommendMusicIdList = recommendMusicIdList
     // console.log(globlalData.recommendMusicIdList);
+    wx.setStorageSync('songList', res.data.recommend)
     
   },
   
