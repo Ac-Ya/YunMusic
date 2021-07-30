@@ -1,0 +1,59 @@
+/* components/songControl/songControl.wxss */
+.songControlContainer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  /* border: 1rpx solid red; */
+  display: flex;
+  box-shadow: 0 0 5rpx #A9A9A9;
+
+}
+.songControlContainer .left{
+  flex: 1;
+  font-size: 26rpx;
+}
+.songControlContainer .left,
+.songControlContainer .right{
+  height: 100rpx;
+  display: flex;
+  line-height: 100rpx;
+}
+.left .songImg{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: auto 10rpx;
+
+  
+}
+.imgAnimation{
+  animation: mymove 10s linear infinite;
+  animation-delay: 0.8s;
+}
+@keyframes mymove
+{
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+
+/* 动画暂停后运行按照暂停之前的状态继续 */
+.animationPause{
+  animation-play-state: paused;
+  -webkit-animation-play-state:paused; /* Safari 和 Chrome */
+}
+.aninationRunning{
+  animation-play-state: running;
+  -webkit-animation-play-state:running; /* Safari 和 Chrome */
+}
+
+.right .iconfont{
+  margin-right: 30rpx;
+  font-size: 50rpx;
+  color: #DD001B;
+}

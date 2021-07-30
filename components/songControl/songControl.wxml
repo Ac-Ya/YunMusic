@@ -1,0 +1,17 @@
+<!--components/songControl/songControl.wxml-->
+<view>
+  <view class="songControlContainer" wx:if="{{isShow}}">
+    <!-- 歌曲底部控制组件 -->
+    <view class="left">
+      <image src="{{songList[songIndex].album.picUrl}}" 
+      class="songImg imgAnimation {{isPlay ? 'animationRunning' : 'animationPause'}}"></image>
+      <text class="songName">{{songList[songIndex].name}}</text>
+    </view>
+    <view class="right">
+      <text class="iconfont {{isPlay ? 'icon-zanting1' : 'icon-bofang3'}}" bindtap="changePlay"></text>
+      <text class="iconfont icon-bofangliebiao"></text>
+    </view>
+  </view>
+
+
+</view>
