@@ -1,13 +1,14 @@
 /* components/musicListCard/musicListCard.wxss */
 .content{
-  position: fixed;
-  bottom: 100rpx;
+  position: absolute;
+  bottom: 130rpx;
   left: calc(10% / 2);
   width: 90%;
   height: 750rpx;
   box-shadow: 0 0 5rpx black;
   border-radius: 40rpx;
   background-color: white;
+  z-index: 9;
 }
 /* card-header 卡片头部 */
 .card-header{
