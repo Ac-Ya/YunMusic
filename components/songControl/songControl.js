@@ -22,7 +22,8 @@ Component({
     songIndex: 0,
     songList: [],
     musicUrl: '',
-    isShow:false 
+    isShow:false,
+    isShowMusicCard:false,//是否显示音乐卡片
   },
 
   /**
@@ -104,6 +105,16 @@ Component({
       this.setData({
         isPlay
       })
+    },
+
+
+    //处理音乐列表的点击事件
+    hangdleShowMusicCard(){
+      let isShowMusicCard = !this.data.isShowMusicCard
+      this.setData({
+        isShowMusicCard
+      })
+
     }
   },
   lifetimes: {

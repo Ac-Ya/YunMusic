@@ -1,0 +1,16 @@
+<!--components/musicListCard/musicListCard.wxml-->
+<view class="musicListCardContainer">
+  <view class="content">
+    <view class="card-header">
+      <text class="title">当前播放</text>
+      <text class="listNum">({{songList.length}})</text>
+      <text class="source">播放来源</text>
+    </view>
+    <scroll-view class="card-scroll" scroll-y enable-flex>
+      <view class="card-scroll-item {{index === songIndex ? 'active':''}}" wx:for="{{songList}}" wx:key="id">
+        <text class="muisc-name">{{item.name}}</text>
+        <text class="singer {{index === songIndex ? 'active':''}}">-{{item.artists[0].name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

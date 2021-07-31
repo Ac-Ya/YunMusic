@@ -9,9 +9,9 @@
     </view>
     <view class="right">
       <text class="iconfont {{isPlay ? 'icon-zanting1' : 'icon-bofang3'}}" bindtap="changePlay"></text>
-      <text class="iconfont icon-bofangliebiao"></text>
+      <text class="iconfont icon-bofangliebiao" bindtap="hangdleShowMusicCard"></text>
     </view>
   </view>
-
+  <music-list-card wx:if="{{isShowMusicCard}}"></music-list-card>
 
 </view>

@@ -1,0 +1,64 @@
+/* components/musicListCard/musicListCard.wxss */
+.content{
+  position: fixed;
+  bottom: 100rpx;
+  left: calc(10% / 2);
+  width: 90%;
+  height: 750rpx;
+  box-shadow: 0 0 5rpx black;
+  border-radius: 40rpx;
+  background-color: white;
+}
+/* card-header 卡片头部 */
+.card-header{
+  /* width: 100%; */
+  height: 100rpx;
+  /* border: 1rpx solid black; */
+  margin: 40rpx 30rpx 10rpx 30rpx;
+}
+.card-header .title{
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-right: 10rpx;
+}
+.card-header .listNum{
+  color:#808080;
+}
+.card-header .source{
+  
+  border: 1rpx solid #C0C0C0;
+  padding:  10rpx 20rpx;
+  border-radius: 40rpx;
+  float: right;
+}
+
+/* 音乐列表区域 */
+.card-scroll{
+  width: calc(100% - 60rpx);
+  display: flex;
+  flex-direction: column;
+  margin: 0 30rpx;
+  /* padding: 0 30rpx; */
+  height: 600rpx;
+  /* border: 1rpx solid black; */
+}
+.card-scroll .card-scroll-item{
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  /* border: 1rpx solid red; */
+  margin-bottom: 20rpx;
+}
+.card-scroll .active{
+  color:#DD001B;
+}
+
+.singer{
+  width: 300rpx;
+  height: 60rpx;
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: normal;
+  color: 	#808080;
+}
