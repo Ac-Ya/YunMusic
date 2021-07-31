@@ -17,7 +17,8 @@ Page({
     currentWidth:0,       //用于保存实时进度条的长度
     index:0,              //当前音乐在列表中的位置
     switchMode:["icon-suijibofang","icon-danquxunhuan","icon-liebiaoxunhuan"],//用于保存音频的切换模式
-    switchIndex:0         //切换模式的索引
+    switchIndex:0,         //切换模式的索引
+    isShowMusicCard:false, //显示音乐卡片
     
   },
 
@@ -68,6 +69,12 @@ Page({
 
 
 
+  },
+  handleShowMusicCard(){
+    this.setData({
+      isShowMusicCard: !this.data.isShowMusicCard
+    })
+    console.log("1");
   },
 
   //获取歌曲详情数据，获取音频链接

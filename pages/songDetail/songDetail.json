@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "disk":"/components/disk/disk",
-    "song-control":"/components/songControl/songControl"
+    "song-control":"/components/songControl/songControl",
+    "music-list-card":"/components/musicListCard/musicListCard"
   },
   "navigationStyle": "custom"
 
