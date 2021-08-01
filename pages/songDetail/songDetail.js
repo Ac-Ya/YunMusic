@@ -26,11 +26,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // console.log(options.musicInfo);
     let {musicId,index} = JSON.parse(options.musicInfo)
     this.setData({
       index
     })
     wx.setStorageSync('songIndex', index)
+    // console.log(globlalData.recommendsongList);
+    wx.setStorageSync('songList', globlalData.recommendsongList)
     //获取路由传过来的id
     // appInstance.globlalData.musicId = musicId
     //获取音频信息
@@ -48,7 +51,6 @@ Page({
     globlalData.backgroundAudioManager.onTimeUpdate(()=>{
       //实时获取歌曲播放的时间
       let currentTime = globlalData.backgroundAudioManager.currentTime
-      // console.log(currentTime);
       //更新当前时间
       
       //更新实时进度条的长度  当前宽度 = （当前时间/总时间）* 总宽度
@@ -65,16 +67,15 @@ Page({
       //播放下一首歌
       this.switchSong(null,'next')
     })
-   
-
-
+  
 
   },
+  //处理展示音乐卡片组件
   handleShowMusicCard(){
     this.setData({
       isShowMusicCard: !this.data.isShowMusicCard
     })
-    console.log("1");
+    // console.log("1");
   },
 
   //获取歌曲详情数据，获取音频链接
@@ -86,7 +87,7 @@ Page({
     //歌曲音频链接
     let res2 = await request("/song/url",{id})
     let musicUrl = res2.data.data[0].url
-    console.log(res1);
+    // console.log(res1);
     this.setData({
       songDetailData,
       musicUrl,
@@ -138,6 +139,10 @@ Page({
       globlalData.backgroundAudioManager.src = musicUrl
       globlalData.backgroundAudioManager.title = musicName
     } catch (error) {
+      wx.showToast({
+        title: '暂未获取到这首歌的播放源,自动为您切换!',
+        icon:"none"
+      })
       this.switchSong(null,'next')
     }
    
@@ -151,6 +156,7 @@ Page({
 
   //切换歌曲
   switchSong(event,type){
+    // console.log(globlalData.recommendMusicIdList);
     //获取点击的类型时"pre" / "next"
     if(event){
       type = event.currentTarget.dataset.id
@@ -158,12 +164,12 @@ Page({
     let index = this.data.index   //获取当前id           
     if(type === 'pre'){
       index -= 1 
-      index < 0 ? (index = globlalData.recommendMusicIdList.length-1) : index
-      this.getMusicInfo(globlalData.recommendMusicIdList[index].id)
+      index < 0 ? (index = globlalData.recommendsongList.length-1) : index
+      this.getMusicInfo(globlalData.recommendsongList[index].id)
     }else{
       index += 1
-      index >= globlalData.recommendMusicIdList.length ? (index = 0) :index
-      this.getMusicInfo(globlalData.recommendMusicIdList[index].id)
+      index >= globlalData.recommendsongList.length ? (index = 0) :index
+      this.getMusicInfo(globlalData.recommendsongList[index].id)
    
     }
        //修改完index后记得更新index
