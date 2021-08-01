@@ -7,7 +7,11 @@
       <text class="source">播放来源</text>
     </view>
     <scroll-view class="card-scroll" scroll-y enable-flex>
-      <view class="card-scroll-item {{index === songIndex ? 'active':''}}" wx:for="{{songList}}" wx:key="id">
+      <view 
+      data-index = "{{index}}"
+      bindtap="hangleswitch"
+      class="card-scroll-item {{index === songIndex ? 'active':''}}" 
+      wx:for="{{songList}}" wx:key="id">
         <text class="muisc-name">{{item.name}}</text>
         <text class="singer {{index === songIndex ? 'active':''}}">-{{item.artists[0].name}}</text>
       </view>

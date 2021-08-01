@@ -1,6 +1,6 @@
 /* components/musicListCard/musicListCard.wxss */
 .content{
-  position: absolute;
+  position: fixed;
   bottom: 130rpx;
   left: calc(10% / 2);
   width: 90%;
@@ -12,10 +12,9 @@
 }
 /* card-header 卡片头部 */
 .card-header{
-  /* width: 100%; */
   height: 100rpx;
   /* border: 1rpx solid black; */
-  margin: 40rpx 30rpx 10rpx 30rpx;
+  margin: 40rpx 30rpx 0 30rpx;
 }
 .card-header .title{
   font-size: 36rpx;
@@ -48,10 +47,15 @@
   height: 60rpx;
   line-height: 60rpx;
   /* border: 1rpx solid red; */
-  margin-bottom: 20rpx;
+  margin-bottom: 15rpx;
 }
 .card-scroll .active{
   color:#DD001B;
+}
+.muisc-name{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: normal;
 }
 
 .singer{

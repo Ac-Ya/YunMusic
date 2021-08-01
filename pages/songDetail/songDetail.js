@@ -1,6 +1,7 @@
 // pages/songDetail/songDetail.js
 import {request} from "../../utils/request"
 import {formatMusicTime} from "../../utils/util"
+import PubSub from "pubsub-js"
 var appInstance = getApp()
 var globlalData = appInstance.globlalData
 Page({
@@ -32,7 +33,7 @@ Page({
       index
     })
     wx.setStorageSync('songIndex', index)
-    // console.log(globlalData.recommendsongList);
+    
     wx.setStorageSync('songList', globlalData.recommendsongList)
     //获取路由传过来的id
     // appInstance.globlalData.musicId = musicId
@@ -68,7 +69,10 @@ Page({
       this.switchSong(null,'next')
     })
   
-
+    //订阅来自musicListCard组件发布的消息
+    PubSub.subscribe("switchSong1",(msg,musicId)=>{
+      this.getMusicInfo(musicId)
+    })
   },
   //处理展示音乐卡片组件
   handleShowMusicCard(){

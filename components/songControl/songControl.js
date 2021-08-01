@@ -1,7 +1,8 @@
 // components/songControl/songControl.js
 import {
   request
-} from "../../utils/request"
+} from "../../utils/request";
+import PubSub from "pubsub-js"
 var appInstance = getApp()
 var globlalData = appInstance.globlalData
 let index = 0;
@@ -34,6 +35,7 @@ Component({
   methods: {
     //处理点击暂停或播放按钮
     changePlay() {
+
       // 判断globlalData.backgroundAudioManager.src有没有值 
       if (!globlalData.backgroundAudioManager.src) {
         index = wx.getStorageSync('songIndex')
@@ -43,10 +45,8 @@ Component({
           如果有更新那么当前歌曲的索引可能在新songList不存在
             1.判断当前歌曲的索引是否存在平且当前歌曲的id是否于list里面索引的list相等
         */
-
         // 获取音频url
         this.getMusicUrl(index)
-        
       }
 
       if (this.data.isPlay) {
@@ -59,30 +59,26 @@ Component({
 
 
     },
-
     //切换下一首
     nextSong() {
-    
-      
       //获取当前音乐在列表中的索引
       index = wx.getStorageSync('songIndex')
       list = this.data.songList
       //判断索引值是否在list范围内
-      console.log(index,list.length);
+      // console.log(index,list.length);
       index+1 >= list.length ? (index = 0) : (index = index + 1)
       // index >= list.length-1 ? (index = -1) : (index = index)
       this.getMusicUrl(index)
 
       
     },
-
     //获取音乐音频
     async getMusicUrl(index) {
+      list = this.data.songList
       // 获取音频url
       let res = await request("/song/url", {
         id:list[index].id
       })
-      console.log(res);
       let name = list[index].name
       this.setMusicPlay(res.data.data[0].url, name)
 
@@ -132,18 +128,7 @@ Component({
       })
     }
   },
-  lifetimes: {
-    // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-    attached: function () {
 
-
-    },
-    moved: function () {},
-    detached: function () {},
-    ready() {
-
-    }
-  },
   pageLifetimes: {
     show() {
       //判断判断globlalData.backgroundAudioManager.src有没有值
@@ -154,18 +139,16 @@ Component({
       //获取数据列表和当前播放歌曲在列表中的索引
       let songList = wx.getStorageSync('songList'),
           songIndex = wx.getStorageSync('songIndex')
-          //跳转到songDetail时回造成globlalData.recommendsongList数据丢失
+          //跳转到songDetail时会造成globlalData.recommendsongList数据丢失
           globlalData.recommendsongList = songList
       if(songList && songIndex >= 0){
         this.setData({
           isShow:true,
+          songList,
+          songIndex
         })
       }
-      this.setData({
-        songList,
-        songIndex,
-      })
-
+     
 
       //设置后台播放和暂停的事件
       globlalData.backgroundAudioManager.onPlay(() => {
@@ -180,6 +163,22 @@ Component({
       globlalData.backgroundAudioManager.onEnded(() => {
         this.nextSong()
       })
+      
+
+      //订阅musicListCard发布的消息
+      PubSub.subscribe("switchSong2",async (msg,songIndex)=>{
+        this.getMusicUrl(songIndex)
+      })
+    }
+  },
+  lifetimes: {
+    // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+    attached: function () {
+
+    },
+    moved: function () {},
+    detached: function () {},
+    ready() {
 
     }
   },

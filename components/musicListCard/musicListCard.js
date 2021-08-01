@@ -1,4 +1,4 @@
-// components/musicListCard/musicListCard.js
+import PubSub from "pubsub-js";
 let songList = [],
   songIndex = 0;
 Component({
@@ -21,6 +21,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    //获取音乐列表的方法
     getSongList(){
       songList = wx.getStorageSync('songList')
       songIndex = wx.getStorageSync('songIndex')
@@ -28,6 +29,19 @@ Component({
         songIndex,
         songList
       })
+    },
+
+    //监听点击切歌的回调
+    hangleswitch(event){
+      songIndex = event.currentTarget.dataset.index
+      let musicId = this.data.songList[songIndex].id
+      PubSub.publish("switchSong1",musicId)
+      PubSub.publish("switchSong2",songIndex)
+      //更新index
+      this.setData({
+        songIndex
+      })
+      wx.setStorageSync('songIndex', songIndex)
     }
   },
   lifetimes: {
