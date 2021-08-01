@@ -43,27 +43,25 @@ Page({
     })
     //获取推荐歌曲列表数据
     this.getRecommendSongList()
-    // wx.nextTick(()=>{
-    //   console.log(this.data.recomendsongList);
-    // })
+
    
   },
   //获取推荐列表
   async getRecommendSongList(){
     const res = await cookieRequest("/recommend/songs")
 
-
-
     this.setData({
       recomendsongList:res.data.recommend,
     })
-    let recommendMusicIdList = []
-    res.data.recommend.forEach((item,index,arr)=>{
-      recommendMusicIdList.push({id:item.id,index})
-    })
-    globlalData.recommendMusicIdList = recommendMusicIdList
+    // let recommendMusicIdList = []
+    // res.data.recommend.forEach((item,index,arr)=>{
+    //   recommendMusicIdList.push({id:item.id,index})
+    // })
+
+    globlalData.recommendsongList = res.data.recommend
+    // globlalData.recommendMusicIdList = recommendMusicIdList
     // console.log(globlalData.recommendMusicIdList);
-    wx.setStorageSync('songList', res.data.recommend)
+   
     
   },
   
@@ -72,7 +70,7 @@ Page({
     // console.log(event)
     let song = event.currentTarget.dataset.song
 
-    // console.log(song);
+  
     //路由跳转传参 通过query
     //【注】原生小程序中路由传参有长度限制，如果参数过长会自动接去掉
     //因为在songDetail页是通过id来获取数据的所以可以直接传入id
