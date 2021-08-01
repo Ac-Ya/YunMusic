@@ -2,7 +2,7 @@
 <view>
   <view class="songControlContainer" wx:if="{{isShow}}">
     <!-- 歌曲底部控制组件 -->
-    <view class="left">
+    <view class="left" bindtap="toSongDetail">
       <image src="{{songList[songIndex].album.picUrl}}" 
       class="songImg imgAnimation {{isPlay ? 'animationRunning' : 'animationPause'}}"></image>
       <text class="songName">{{songList[songIndex].name}}</text>

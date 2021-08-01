@@ -18,12 +18,14 @@ Component({
    * 组件的初始数据
    */
   data: {
-    isPlay: false,
+    isPlay: false,   //是否播放
     songIndex: 0,
     songList: [],
-    musicUrl: '',
-    isShow:false,
-    isShowMusicCard:false,//是否显示音乐卡片
+    musicUrl: '',    //用于保存当前音乐的url
+    isShow:false,    //是否显示该组件
+    isShowMusicCard:false,//是否显示音乐卡片组件
+    // musicId:0,     //用于保存当前音乐的id
+    // currentMusicInfo:null, //当前索引的音乐信息 
   },
 
   /**
@@ -32,28 +34,26 @@ Component({
   methods: {
     //处理点击暂停或播放按钮
     changePlay() {
-      // 判断globlalData.backgroundAudioManager.src有没有值
+      // 判断globlalData.backgroundAudioManager.src有没有值 
       if (!globlalData.backgroundAudioManager.src) {
         index = wx.getStorageSync('songIndex')
         list = this.data.songList
+        /*
+          判断songList是否有更新
+          如果有更新那么当前歌曲的索引可能在新songList不存在
+            1.判断当前歌曲的索引是否存在平且当前歌曲的id是否于list里面索引的list相等
+        */
+
         // 获取音频url
         this.getMusicUrl(index)
         
       }
 
-
-
       if (this.data.isPlay) {
         globlalData.backgroundAudioManager.pause()
-        // this.setData({
-        //   isPlay:false
-        // })
         this.changePlayState(false)
       } else {
         globlalData.backgroundAudioManager.play()
-        // this.setData({
-        //   isPlay:true
-        // })
         this.changePlayState(true)
       }
 
@@ -62,13 +62,16 @@ Component({
 
     //切换下一首
     nextSong() {
+    
+      
       //获取当前音乐在列表中的索引
       index = wx.getStorageSync('songIndex')
       list = this.data.songList
       //判断索引值是否在list范围内
-      index > list.length ? (index = 0) : (index = index)
-
-      this.getMusicUrl(index+1)
+      console.log(index,list.length);
+      index+1 >= list.length ? (index = 0) : (index = index + 1)
+      // index >= list.length-1 ? (index = -1) : (index = index)
+      this.getMusicUrl(index)
 
       
     },
@@ -77,8 +80,9 @@ Component({
     async getMusicUrl(index) {
       // 获取音频url
       let res = await request("/song/url", {
-        id: list[index].id
+        id:list[index].id
       })
+      console.log(res);
       let name = list[index].name
       this.setMusicPlay(res.data.data[0].url, name)
 
@@ -115,6 +119,17 @@ Component({
         isShowMusicCard
       })
 
+    },
+    //处理跳转到歌曲详情页
+    toSongDetail(){
+      let index = this.data.songIndex
+      let musicId = this.data.songList[index].id
+      let musicInfo = {
+        index,musicId
+      }
+      wx.navigateTo({
+        url: '/pages/songDetail/songDetail?musicInfo='+JSON.stringify(musicInfo),
+      })
     }
   },
   lifetimes: {
@@ -139,14 +154,16 @@ Component({
       //获取数据列表和当前播放歌曲在列表中的索引
       let songList = wx.getStorageSync('songList'),
           songIndex = wx.getStorageSync('songIndex')
+          //跳转到songDetail时回造成globlalData.recommendsongList数据丢失
+          globlalData.recommendsongList = songList
       if(songList && songIndex >= 0){
         this.setData({
-          isShow:true
+          isShow:true,
         })
       }
       this.setData({
         songList,
-        songIndex
+        songIndex,
       })
 
 
