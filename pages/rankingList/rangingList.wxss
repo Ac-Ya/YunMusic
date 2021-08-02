@@ -1,0 +1,62 @@
+.rankingListContrainer{
+  padding: 0 30rpx;
+}
+/* 官方榜样式 */
+.title{
+  height: 80rpx;
+  line-height: 80rpx;
+  /* border: 1rpx solid red; */
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.official-list{
+  display: flex;
+  flex-direction: column;
+}
+.official-list-item{
+  display: flex;
+  height: 240rpx;
+}
+.rankingListContrainer .list-img{
+  width: 210rpx;
+  height: 210rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.list-img image{
+  position: relative;
+  width: 210rpx;
+  height: 210rpx;
+  border-radius: 20rpx;
+}
+.list-img .update-time{
+  position: absolute;
+  left: 20rpx;
+  bottom: 10rpx;
+  color: white;
+  font-size: 24rpx;
+}
+
+
+
+/* 榜单摘要 */
+.list-abstract{
+  display: flex;
+  flex-direction: column;
+  height: 220rpx;
+  justify-content:flex-start
+}
+.list-abstract .list-content{
+  flex:auto;
+  line-height: 72rpx;
+  width: 450rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 全球榜样式 */
+.global-list{
+  display: flex;
+  align-content:center;
+  flex-wrap:wrap
+}

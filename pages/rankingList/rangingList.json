@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "song-control":"/components/songControl/songControl"
+  },
+  "navigationBarTitleText": "排行榜"
+
+}
