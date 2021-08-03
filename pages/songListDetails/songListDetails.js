@@ -1,21 +1,35 @@
 // pages/songListDetails/songListDetails.js
+import {request} from "../../utils/request"
+let id = 0
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    top:0,
-    distance:0
+    distance:0,//页面滚动的距离
+    rankingListType:'',//榜单类型
+    updateTime:'',//榜单最近更新时间
+    updateTimestamp:0,//时间戳
+    collecNum:"",//榜单收藏数量
+    rankingSongList:[],//榜单歌曲列表
+
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    id = JSON.parse(options.id)
+    this.getRankingListData(id)
   },
 
+  //通过id获取榜单信息
+  async getRankingListData(id){
+    let res = await request("/playlist/detail",{id})
+    console.log(res);
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
