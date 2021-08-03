@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    top:0,
+    distance:0
   },
 
   /**
@@ -15,13 +16,22 @@ Page({
 
   },
 
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
+  /*
+    页面滚动监听
+  */
+  onPageScroll(e){
+    // console.log(e);
+    this.setData({
+      distance:e.scrollTop
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

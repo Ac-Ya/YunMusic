@@ -1,1 +1,133 @@
 /* pages/songListDetails/songListDetails.wxss */
+/* 头部区域 */
+.back .iconfont{
+  position: fixed;
+  top:40rpx;
+  left: 20rpx;
+  z-index: 99;
+  color: white;
+  font-size: 60rpx;
+}
+
+.songListDetails-header{
+  position: absolute;
+  width: 100%;
+  height: 600rpx;
+  /* border: 1rpx solid red; */
+}
+.header-fixed{
+  position: fixed;
+  z-index: 9;
+  top:-430rpx;
+}
+.songListDetails-header .bgImg{
+
+  width: 100%;
+  height: 100%;
+}
+.songListDetails-header .list-name{
+  position: absolute;
+  top:35%;
+  left: 30rpx;
+}
+.list-name .name{
+  font-size: 80rpx;
+  color: white;
+  margin-right: 20rpx;
+}
+.list-name .iconfont{
+  color: white;
+}
+.list-name .update-time{
+  font-size: 26rpx;
+  color:	#F5F5F5;
+}
+
+/* 内容区 */
+/* 播放及收藏 */
+.songListDetails-content .allPlayControl{
+  position: absolute;
+  top:550rpx;
+  width: 100%;
+  height: 100rpx;
+  border-radius: 50rpx 50rpx 0 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.songListDetails-content .fixed{
+  position: fixed;
+  z-index: 9;
+  top:120rpx;
+}
+.playAll{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.playAll .iconfont{
+  font-size: 55rpx;
+  margin:0 20rpx;
+}
+.playAll .play{
+  font-size: 36rpx;
+}
+.playAll .songNum{
+  color:#808080;
+}
+.collection{
+  height: 40rpx;
+  line-height: 40rpx;
+  /* border: 1rpx solid red; */
+  margin: 10rpx 20rpx 0 0;
+  padding: 20rpx;
+  border-radius: 40rpx;
+  color: white;
+  background-color: #EC4141;
+}
+
+/* 歌曲列表 */
+.musicList{
+  display: flex;
+  height: calc(100vh - 220rpx);
+  flex-direction: column;
+  position: absolute;
+  top:650rpx;
+}
+/* .musicList-scroll{
+  height: calc(100vh - 220rpx)
+} */
+.musicList-item{
+  width: 100%;
+  display: flex;
+  height: 100rpx;
+  /* border: 1rpx solid red; */
+  padding-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+.musicList-item .ranking{
+  width:50rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 38rpx;
+  margin-right: 10rpx;
+}
+.musicList-item .music-info{
+  display: flex;
+  flex-direction: column;
+}
+.music-info .music-name{
+  width: 550rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  margin-bottom: 10rpx;
+}
+.music-info .singer{
+  color: 	#808080;
+  font-size: 28rpx;
+}
+.musicList-item .iconfont{
+  font-size: 60rpx;
+  line-height: 100rpx;
+  margin-left: 20rpx;
+}

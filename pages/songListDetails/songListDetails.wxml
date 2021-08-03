@@ -1,2 +1,130 @@
-<!--pages/songListDetails/songListDetails.wxml-->
-<text>pages/songListDetails/songListDetails.wxml</text>
+<!-- 歌单详情页 -->
+<view class="songListDetailsContainer">
+  <view class="back">
+    <text class="iconfont icon-zuo"></text>
+  </view>
+  <!--头部区域  -->
+  <view class="songListDetails-header {{distance >= 220 ? 'header-fixed':''}}">
+    <image src="../../static/indexImg/55018946.jpg" class="bgImg">
+    </image>
+    <view class="list-name">
+      <text class="name">飙升榜</text>
+      <text class="iconfont .icon-xiangqing"></text>
+      <view class="update-time">最近更新:8月3日</view>
+    </view>
+
+  </view>
+  <!-- 内容区 -->
+  <view class="songListDetails-content">
+    <view class="allPlayControl {{distance >= 220 ? 'fixed':''}}">
+      <view class="playAll">
+        <text class="iconfont icon-bofang"></text>
+        <text class="play">播放全部</text>
+        <text class="songNum">(共99首)</text>
+      </view>
+      <view class="collection">
+        <text class="iconfont"></text>
+        <text class="collecNum">+ 收藏 （280.3万)</text>
+      </view>
+    </view>
+    <view class="musicList">
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+      <view class="musicList-item">
+        <text class="ranking">1</text>
+        <view class="music-info">
+          <text class="music-name">PLUTO</text>
+          <text class="singer">某幻君/DMYoung-PLUTo</text>
+        </view>
+        <text class="iconfont icon-dashujukeshihuaico-"></text>
+      </view>
+    </view>
+  </view>
+
+</view>
