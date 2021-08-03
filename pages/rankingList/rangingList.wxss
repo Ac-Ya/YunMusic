@@ -1,5 +1,6 @@
 .rankingListContrainer{
   padding: 0 30rpx;
+  margin-bottom: 100rpx;
 }
 /* 官方榜样式 */
 .title{

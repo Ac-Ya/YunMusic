@@ -42,5 +42,6 @@
       </image>
     </view>
   </view>
-  <song-control></song-control>
+
 </view>
+<song-control></song-control>
