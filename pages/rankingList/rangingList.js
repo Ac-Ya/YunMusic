@@ -28,7 +28,15 @@ Page({
       globalListData:list.slice(4)
     })
   },
-
+  // 跳转到榜单详情页
+  toSongListDetails(event){
+    // console.log(event);
+    let id = event.currentTarget.dataset.id
+    //路由跳转传参
+    wx.navigateTo({
+      url: '/pages/songListDetails/songListDetails?id='+JSON.stringify(id),
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

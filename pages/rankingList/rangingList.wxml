@@ -2,7 +2,7 @@
   <!-- 官方榜-->
   <view class="title">官方榜</view>
   <view class="official-list">
-    <view class="official-list-item" wx:for="{{officialListData}}" wx:key="id">
+    <view class="official-list-item" wx:for="{{officialListData}}" wx:key="id" bindtap="toSongListDetails" data-id="{{item.id}}">
     <!-- 榜单摘要图 -->
       <view class="list-img">
         <image src="{{item.coverImgUrl}}">
@@ -17,26 +17,26 @@
       </view>
     </view>
     <!-- 歌手榜单 -->
-    <view class="official-list-item">
-    <!-- 榜单摘要图 -->
+    <!-- <view class="official-list-item" bindtap="toSongListDetails">
+  
       <view class="list-img">
         <image src="{{artistListData.coverUrl}}">
           <text class="update-time">{{artistListData.updateFrequency}}</text>
         </image> 
       </view>
-      <!-- 榜单摘要 -->
+ 
       <view class="list-abstract">
         <text class="list-content">1.{{artistListData.artists[0].first}}</text>
         <text class="list-content">2.{{artistListData.artists[1].first}}</text>
         <text class="list-content">3.{{artistListData.artists[2].first}}</text>
       </view>
-    </view>
+    </view> -->
   </view>
 
   <!-- 全球榜 -->
   <view class="title">全球榜</view>
   <view class="global-list">
-    <view class="list-img" wx:for="{{globalListData}}" wx:key="id">
+    <view class="list-img" wx:for="{{globalListData}}" wx:key="id" data-id="{{item.id}}" bindtap="toSongListDetails">
       <image  src="{{item.coverImgUrl}}" lazy-load="true">
         <text class="update-time">{{item.updateFrequency}}</text>
       </image>
