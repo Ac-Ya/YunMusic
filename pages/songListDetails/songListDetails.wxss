@@ -2,7 +2,7 @@
 /* 头部区域 */
 .back .iconfont{
   position: fixed;
-  top:40rpx;
+  top:60rpx;
   left: 20rpx;
   z-index: 99;
   color: white;
@@ -93,9 +93,7 @@
   position: absolute;
   top:650rpx;
 }
-/* .musicList-scroll{
-  height: calc(100vh - 220rpx)
-} */
+
 .musicList-item{
   width: 100%;
   display: flex;
@@ -110,6 +108,9 @@
   line-height: 100rpx;
   font-size: 38rpx;
   margin-right: 10rpx;
+}
+.topThree{
+  color:#EC4141
 }
 .musicList-item .music-info{
   display: flex;

@@ -1,6 +1,13 @@
 // pages/songListDetails/songListDetails.js
 import {request} from "../../utils/request"
-let id = 0
+import {timestampFormat,tranNumber} from "../../utils/util"
+let id = 0,
+rankingListType = '',//榜单类型
+updateTime = '',//榜单最近更新时间
+updateTimestamp = 0,//时间戳
+collectNum = "",//榜单收藏数量
+rankingSongList = [],//榜单歌曲列表
+description = ''
 Page({
 
   /**
@@ -10,9 +17,9 @@ Page({
     distance:0,//页面滚动的距离
     rankingListType:'',//榜单类型
     updateTime:'',//榜单最近更新时间
-    updateTimestamp:0,//时间戳
-    collecNum:"",//榜单收藏数量
+    collectNum:"",//榜单收藏数量
     rankingSongList:[],//榜单歌曲列表
+    description:'',//榜单描述
 
 
   },
@@ -29,6 +36,18 @@ Page({
   async getRankingListData(id){
     let res = await request("/playlist/detail",{id})
     console.log(res);
+    rankingListType = res.data.playlist.name
+    updateTimestamp = res.data.playlist.updateTime
+    collectNum = res.data.playlist.subscribedCount
+    rankingSongList = res.data.playlist.tracks
+    description = res.data.playlist.description
+    this.setData({
+      rankingListType,
+      updateTime:timestampFormat(updateTimestamp),
+      collectNum:tranNumber(collectNum,1),
+      rankingSongList,
+      description
+    })
   },
 
   /**
