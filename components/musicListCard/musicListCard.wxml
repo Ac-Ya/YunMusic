@@ -13,7 +13,7 @@
       class="card-scroll-item {{index === songIndex ? 'active':''}}" 
       wx:for="{{songList}}" wx:key="id">
         <text class="muisc-name">{{item.name}}</text>
-        <text class="singer {{index === songIndex ? 'active':''}}">-{{item.artists[0].name}}</text>
+        <text class="singer {{index === songIndex ? 'active':''}}">-{{item.ar ? item.ar[0].name : item.artists[0].name}}</text>
       </view>
     </scroll-view>
   </view>

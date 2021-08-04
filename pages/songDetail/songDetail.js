@@ -1,9 +1,9 @@
 // pages/songDetail/songDetail.js
-import {request} from "../../utils/request"
-import {formatMusicTime} from "../../utils/util"
-import PubSub from "pubsub-js"
-var appInstance = getApp()
-var globlalData = appInstance.globlalData
+import {request} from "../../utils/request";
+import {formatMusicTime} from "../../utils/util";
+import PubSub from "pubsub-js";
+var appInstance = getApp();
+var globalData = appInstance.globalData;
 Page({
 
   /**
@@ -33,29 +33,27 @@ Page({
       index
     })
     wx.setStorageSync('songIndex', index)
-    
-    wx.setStorageSync('songList', globlalData.recommendsongList)
-    //获取路由传过来的id
-    // appInstance.globlalData.musicId = musicId
+    console.log(globalData.songList);
+    wx.setStorageSync('songList', globalData.songList)
     //获取音频信息
     this.getMusicInfo(musicId)
 
     //设置后台播放和暂停的事件
-    globlalData.backgroundAudioManager.onPlay(()=>{
+    globalData.backgroundAudioManager.onPlay(()=>{
       this.changeState(true)
     })
-    globlalData.backgroundAudioManager.onPause(()=>{
+    globalData.backgroundAudioManager.onPause(()=>{
       this.changeState(false)
     })
 
     //实时监听歌曲播放进度
-    globlalData.backgroundAudioManager.onTimeUpdate(()=>{
+    globalData.backgroundAudioManager.onTimeUpdate(()=>{
       //实时获取歌曲播放的时间
-      let currentTime = globlalData.backgroundAudioManager.currentTime
+      let currentTime = globalData.backgroundAudioManager.currentTime
       //更新当前时间
       
       //更新实时进度条的长度  当前宽度 = （当前时间/总时间）* 总宽度
-      let currentWidth = (globlalData.backgroundAudioManager.currentTime / globlalData.backgroundAudioManager.duration) * 490
+      let currentWidth = (globalData.backgroundAudioManager.currentTime / globalData.backgroundAudioManager.duration) * 490
       this.setData({
         currentTime:formatMusicTime(currentTime * 1000),
         currentWidth
@@ -64,7 +62,7 @@ Page({
     })
 
     //监听音频自然播放结束
-    globlalData.backgroundAudioManager.onEnded(()=>{
+    globalData.backgroundAudioManager.onEnded(()=>{
       //播放下一首歌
       this.switchSong(null,'next')
     })
@@ -125,13 +123,13 @@ Page({
   //控制音乐播放/暂停的功能函数
   musicPlayControl(isplay){
     if(isplay){
-      globlalData.backgroundAudioManager.play()
-      globlalData.backgroundAudioManager.onPlay(()=>{
+      globalData.backgroundAudioManager.play()
+      globalData.backgroundAudioManager.onPlay(()=>{
         this.changeState(isplay)
       })
     }else{
-      globlalData.backgroundAudioManager.pause()
-      globlalData.backgroundAudioManager.pause(()=>{
+      globalData.backgroundAudioManager.pause()
+      globalData.backgroundAudioManager.pause(()=>{
         this.changeState(isplay)
       })
     }     
@@ -140,8 +138,8 @@ Page({
   musicPlay(musicUrl,musicName){   
     //处理如果获取不到url时在往下移一次
     try {
-      globlalData.backgroundAudioManager.src = musicUrl
-      globlalData.backgroundAudioManager.title = musicName
+      globalData.backgroundAudioManager.src = musicUrl
+      globalData.backgroundAudioManager.title = musicName
     } catch (error) {
       wx.showToast({
         title: '暂未获取到这首歌的播放源,自动为您切换!',
@@ -160,7 +158,7 @@ Page({
 
   //切换歌曲
   switchSong(event,type){
-    // console.log(globlalData.recommendMusicIdList);
+    // console.log(globalData.recommendMusicIdList);
     //获取点击的类型时"pre" / "next"
     if(event){
       type = event.currentTarget.dataset.id
@@ -168,12 +166,12 @@ Page({
     let index = this.data.index   //获取当前id           
     if(type === 'pre'){
       index -= 1 
-      index < 0 ? (index = globlalData.recommendsongList.length-1) : index
-      this.getMusicInfo(globlalData.recommendsongList[index].id)
+      index < 0 ? (index = globalData.songList.length-1) : index
+      this.getMusicInfo(globalData.songList[index].id)
     }else{
       index += 1
-      index >= globlalData.recommendsongList.length ? (index = 0) :index
-      this.getMusicInfo(globlalData.recommendsongList[index].id)
+      index >= globalData.songList.length ? (index = 0) :index
+      this.getMusicInfo(globalData.songList[index].id)
    
     }
        //修改完index后记得更新index

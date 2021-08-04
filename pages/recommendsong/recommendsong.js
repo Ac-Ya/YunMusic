@@ -5,7 +5,7 @@ import {cookieRequest} from "../../utils/request"
 import PubSub from "pubsub-js"
 
 var appInstance = getApp()
-var globlalData = appInstance.globlalData
+var globalData = appInstance.globalData
 Page({
 
   /**
@@ -14,7 +14,7 @@ Page({
   data: {
     day:0,
     month:0,
-    recomendsongList:[],//推荐歌曲列表
+    recommendsongList:[],//推荐歌曲列表
     recommendsongImg:[]
   },
 
@@ -53,14 +53,9 @@ Page({
     this.setData({
       recomendsongList:res.data.recommend,
     })
-    // let recommendMusicIdList = []
-    // res.data.recommend.forEach((item,index,arr)=>{
-    //   recommendMusicIdList.push({id:item.id,index})
-    // })
 
-    globlalData.recommendsongList = res.data.recommend
-    // globlalData.recommendMusicIdList = recommendMusicIdList
-    // console.log(globlalData.recommendMusicIdList);
+    globalData.songList = res.data.recommend
+
    
     
   },

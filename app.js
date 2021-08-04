@@ -1,8 +1,10 @@
 App({
 
-  globlalData:{
+  globalData:{
     musicId:'', //音乐id 
-    backgroundAudioManager:null  //背景音频实例
+    backgroundAudioManager:wx.getBackgroundAudioManager(),  //音频实例
+    recommendMusicIdList:[],//推荐页所有音乐的音乐id
+    songList:[],//音乐列表
   },
 
   /**

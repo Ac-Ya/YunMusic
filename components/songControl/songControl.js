@@ -4,7 +4,7 @@ import {
 } from "../../utils/request";
 import PubSub from "pubsub-js"
 var appInstance = getApp()
-var globlalData = appInstance.globlalData
+var globalData = appInstance.globalData
 let index = 0;
 let list = null;
 Component({
@@ -36,8 +36,8 @@ Component({
     //处理点击暂停或播放按钮
     changePlay() {
 
-      // 判断globlalData.backgroundAudioManager.src有没有值 
-      if (!globlalData.backgroundAudioManager.src) {
+      // 判断globalData.backgroundAudioManager.src有没有值 
+      if (!globalData.backgroundAudioManager.src) {
         index = wx.getStorageSync('songIndex')
         list = this.data.songList
         /*
@@ -50,10 +50,10 @@ Component({
       }
 
       if (this.data.isPlay) {
-        globlalData.backgroundAudioManager.pause()
+        globalData.backgroundAudioManager.pause()
         this.changePlayState(false)
       } else {
-        globlalData.backgroundAudioManager.play()
+        globalData.backgroundAudioManager.play()
         this.changePlayState(true)
       }
 
@@ -93,8 +93,8 @@ Component({
     //设置音乐音频
     setMusicPlay(musicUrl, musicName) {
       try {
-        globlalData.backgroundAudioManager.src = musicUrl
-        globlalData.backgroundAudioManager.title = musicName
+        globalData.backgroundAudioManager.src = musicUrl
+        globalData.backgroundAudioManager.title = musicName
       } catch (error) {
         this.getMusicUrl(index+1)
       }
@@ -131,8 +131,8 @@ Component({
 
   pageLifetimes: {
     show() {
-      //判断判断globlalData.backgroundAudioManager.src有没有值
-      if(globlalData.backgroundAudioManager.src){
+      //判断判断globalData.backgroundAudioManager.src有没有值
+      if(globalData.backgroundAudioManager.src){
         this.changePlayState(true)
       }
 
@@ -140,7 +140,7 @@ Component({
       let songList = wx.getStorageSync('songList'),
           songIndex = wx.getStorageSync('songIndex')
           //跳转到songDetail时会造成globlalData.recommendsongList数据丢失
-          globlalData.recommendsongList = songList
+          globalData.recommendsongList = songList
       if(songList && songIndex >= 0){
         this.setData({
           isShow:true,
@@ -151,16 +151,16 @@ Component({
      
 
       //设置后台播放和暂停的事件
-      globlalData.backgroundAudioManager.onPlay(() => {
+      globalData.backgroundAudioManager.onPlay(() => {
         this.changePlayState(true)
       })
-      globlalData.backgroundAudioManager.onPause(() => {
+      globalData.backgroundAudioManager.onPause(() => {
         this.changePlayState(false)
       })
 
 
       //歌曲自然播放结束
-      globlalData.backgroundAudioManager.onEnded(() => {
+      globalData.backgroundAudioManager.onEnded(() => {
         this.nextSong()
       })
       
