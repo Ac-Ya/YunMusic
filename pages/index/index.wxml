@@ -25,7 +25,7 @@
         <text class="iconfont icon-gedan"></text>
         <text>歌单</text>
       </view>
-      <view class="nav-item">
+      <view class="nav-item" bindtap="torankingList">
         <text class="iconfont icon-paihangbang"></text>
         <text>排行榜</text>
       </view>
@@ -42,7 +42,7 @@
     <!-- 推荐区域 -->
     <view class="recommond">
       <view class="recommond-header">
-        <text class="title">推荐歌曲</text>  
+        <text class="title">推荐歌单</text>  
         <view>
           <text>为你精心推荐</text>
           <text class="more">查看更多</text>

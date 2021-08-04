@@ -62,6 +62,14 @@ Page({
 
   },
 
+  //跳转到排行榜页面
+  torankingList(){
+    wx.navigateTo({
+      url: '/pages/rankingList/rangingList',
+    })
+
+  },
+
   //跳转到搜索页面
   toSearch(){
     wx.navigateTo({
