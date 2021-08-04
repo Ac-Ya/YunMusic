@@ -1,9 +1,12 @@
 // pages/songListDetails/songListDetails.js
 import {request} from "../../utils/request"
-import {timestampFormat,tranNumber} from "../../utils/util"
+import {timestampFormat,tranNumber} from "../../utils/util";
+
+var appInstance = getApp();
+var globalData = appInstance.globalData;
+
 let id = 0,
 rankingListType = '',//榜单类型
-updateTime = '',//榜单最近更新时间
 updateTimestamp = 0,//时间戳
 collectNum = "",//榜单收藏数量
 rankingSongList = [],//榜单歌曲列表
@@ -30,17 +33,18 @@ Page({
   onLoad: function (options) {
     id = JSON.parse(options.id)
     this.getRankingListData(id)
+    
   },
 
   //通过id获取榜单信息
   async getRankingListData(id){
     let res = await request("/playlist/detail",{id})
-    console.log(res);
-    rankingListType = res.data.playlist.name
-    updateTimestamp = res.data.playlist.updateTime
-    collectNum = res.data.playlist.subscribedCount
-    rankingSongList = res.data.playlist.tracks
-    description = res.data.playlist.description
+    let playlist = res.data.playlist
+    rankingListType = playlist.name
+    updateTimestamp = playlist.updateTime
+    collectNum = playlist.subscribedCount
+    rankingSongList = playlist.tracks
+    description = playlist.description
     this.setData({
       rankingListType,
       updateTime:timestampFormat(updateTimestamp),
@@ -48,8 +52,22 @@ Page({
       rankingSongList,
       description
     })
+    globalData.songList = rankingSongList
   },
-
+  // 退回
+  back(){
+    wx.navigateBack({
+      delta:1
+    })
+  },
+  //跳转到歌曲详情页
+  tosongDetail(e){
+    console.log(e);
+    let song = e.currentTarget.dataset.song
+    wx.navigateTo({
+      url: '/pages/songDetail/songDetail?musicInfo='+song
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

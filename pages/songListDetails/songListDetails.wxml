@@ -1,6 +1,6 @@
 <!-- 歌单详情页 -->
 <view class="songListDetailsContainer">
-  <view class="back">
+  <view class="back" bindtap="back">
     <text class="iconfont icon-zuo"></text>
   </view>
   <!--头部区域  -->
@@ -28,7 +28,11 @@
       </view>
     </view>
     <view class="musicList">
-      <view class="musicList-item" wx:for="{{rankingSongList}}" wx:key="id">
+      <view 
+      data-song='{"musicId":{{item.id}},"index":{{index}}}'
+      bindtap="tosongDetail"
+      class="musicList-item" 
+      wx:for="{{rankingSongList}}" wx:key="id">
         <text class="ranking {{index < 3? 'topThree':''}}">{{index+1}}</text>
         <view class="music-info">
           <text class="music-name">{{item.name}}</text>
