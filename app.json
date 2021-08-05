@@ -1,12 +1,19 @@
 {
   "pages": [
-    "pages/recommendsong/recommendsong",
-    "pages/songDetail/songDetail",
-    
-    "pages/video/video",
-    "pages/login/login",
+    "pages/index/index",
+
+    "pages/rankingList/rangingList",
+
+    "pages/songListDetails/songListDetails",
     "pages/profile/profile",
-    "pages/index/index"
+
+    "pages/recommendsong/recommendsong",
+    "pages/test/test",
+    "pages/search/search",
+    "pages/login/login",
+    "pages/songDetail/songDetail",
+    "pages/video/video"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -39,7 +46,9 @@
       }
     ]
   },
-  "requiredBackgroundModes": ["audio"],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

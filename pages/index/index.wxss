@@ -54,40 +54,54 @@
 
 /* 推荐区域 */
 /* 推荐区域头部 */
-.recommond{
+.recommend{
   /* width: 100%; */
   padding: 10rpx 20rpx 0rpx 20rpx;  
 }
-.recommond .title{
+.recommend .title{
   font-size: 28rpx;
   color: #666;
   line-height: 60rpx;
 }
-.recommond .more{
+.recommend .more{
   float: right;
   border: 1px solid black;
   border-radius: 30rpx;
   font-size: 24rpx;
   padding: 10rpx;
 }
-.recommond .recommond-header{
+.recommend .recommend-header{
   margin-bottom: 30rpx;
 }
-/* 推荐内容区 */
-.recommond .recommond-content{
+/* 推荐歌单区 */
+.recommend .recommend-content{
   display: flex;
   height: 300rpx;
 }
 .content-item{
+  position: relative;
   width: 200rpx;
   margin-right: 20rpx;
-  
 }
 .content-item image{
   width: 200rpx;
   height: 200rpx;
   border-radius: 20rpx;
 }
+.content-item .count{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: 10rpx;
+  top:10rpx;
+  color: white;
+}
+.count .iconfont{
+  font-size: 34rpx;
+}
+
+
+
 .content-item text{
   display: -webkit-box;
   overflow: hidden;

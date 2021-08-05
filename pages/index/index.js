@@ -1,5 +1,8 @@
 // pages/index/index.js
-import {request} from "../../utils/request"
+import {request,cookieRequest} from "../../utils/request"
+import {tranNumber} from "../../utils/util"
+let playCount = [],
+recommendsList = []
 Page({
 
   /**
@@ -7,7 +10,8 @@ Page({
    */
   data: {
     bannersList:[],  //轮播图数据
-    recommondsList:[], //推荐数据
+    recommendsList:[], //推荐歌单数据
+    playCount:[],    //推荐歌单的播放量
     ranksList:[],   //排行榜数据
   },
 
@@ -25,15 +29,16 @@ Page({
       console.log(err);
     })
 
-    //获取推荐数据
-    request("/personalized",{limit:30}).then((value)=>{
-      // console.log(value);
-      this.setData({
-        recommondsList : value.data.result
-      })
-    }).catch((err)=>{
-      console.log(err);
-    })
+    //获取推荐歌单数据
+    this.getRecommendList()
+    // request("/personalized",{limit:30}).then((value)=>{
+    //   // console.log(value);
+    //   this.setData({
+    //     recommendsList : value.data.result
+    //   })
+    // }).catch((err)=>{
+    //   console.log(err);
+    // })
 
     //获取排行榜数据
     let index = 0
@@ -54,6 +59,25 @@ Page({
     }
     
   },
+  //获取推荐歌单数据
+  async getRecommendList(){
+    let res = await cookieRequest("/recommend/resource")
+    console.log(res);
+    recommendsList = res.data.recommend
+    for(let i of recommendsList){
+       let n = tranNumber(i.playcount,0)
+        playCount.push(n)
+    }
+
+
+    this.setData({
+      recommendsList,
+      playCount
+    })
+  },
+
+
+
   //跳转到推荐歌曲页面
   torecommendsong(){
     wx.navigateTo({
