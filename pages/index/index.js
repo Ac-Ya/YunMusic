@@ -31,14 +31,7 @@ Page({
 
     //获取推荐歌单数据
     this.getRecommendList()
-    // request("/personalized",{limit:30}).then((value)=>{
-    //   // console.log(value);
-    //   this.setData({
-    //     recommendsList : value.data.result
-    //   })
-    // }).catch((err)=>{
-    //   console.log(err);
-    // })
+
 
     //获取排行榜数据
     let index = 0

@@ -88,6 +88,7 @@
   height: 200rpx;
   border-radius: 20rpx;
 }
+/* 推荐歌单播放量 */
 .content-item .count{
   display: flex;
   flex-direction: row;

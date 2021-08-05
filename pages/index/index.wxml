@@ -52,6 +52,7 @@
         <view class="content-item" wx:for="{{recommendsList}}" wx:key="id">
           <image src="{{item.picUrl}}" lazy-load="true">
           </image>
+          <!-- 推荐歌单播放量 -->
           <view class="count">
             <text class="iconfont icon-bofang4"></text>
             <text class="playCount">{{playCount[index]}}</text>
