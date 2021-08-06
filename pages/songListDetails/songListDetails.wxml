@@ -22,7 +22,7 @@
         <!-- 推荐歌单播放量 -->
         <view class="count">
           <text class="iconfont icon-bofang4"></text>
-          <text class="playCount">{{collectNum}}</text>
+          <text class="playCount">{{playCount}}</text>
         </view>
       </view>
       <view class="right">

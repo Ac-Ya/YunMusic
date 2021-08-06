@@ -1,6 +1,9 @@
 // pages/index/index.js
 import {request,cookieRequest} from "../../utils/request"
 import {tranNumber} from "../../utils/util"
+import PubSub from "pubsub-js";
+var appInstance = getApp()
+var globalData = appInstance.globalData
 let playCount = [],
 recommendsList = []
 Page({
@@ -40,7 +43,8 @@ Page({
       request("/top/list",{idx:index++}).then((value)=>{
         // console.log(value);
         //使用对象封装数据
-        let obj = {name:value.data.playlist.name,tracks:value.data.playlist.tracks.slice(0,3)}
+        let obj = {name:value.data.playlist.name,tracks:value.data.playlist.tracks}
+
         arr.push(obj)
         // console.log(arr);
         this.setData({
@@ -55,10 +59,10 @@ Page({
   //获取推荐歌单数据
   async getRecommendList(){
     let res = await cookieRequest("/recommend/resource")
-    console.log(res);
+    // console.log(res);
     recommendsList = res.data.recommend
     for(let i of recommendsList){
-       let n = tranNumber(i.playcount,0)
+       let n = tranNumber(i.playcount,1)
         playCount.push(n)
     }
 
@@ -94,7 +98,47 @@ Page({
     })
   },
   
+  //跳转到歌单详情页面
+  toSongListDetails(e){
+    console.log(e);
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/songListDetails/songListDetails?id='+JSON.stringify(id),
+    })
+  },
 
+  //播放音乐
+  hangdleChange(e){
+    // console.log(e)
+    let {listIndex,songIndex,musicId} = JSON.parse(e.currentTarget.dataset.info)
+    let songList = this.data.ranksList[listIndex].tracks
+    
+    wx.setStorageSync('songList', songList)
+    wx.setStorageSync('songIndex', songIndex)
+
+    // this.getMusicUrl(songIndex,songList)
+    PubSub.publish("switchSong3",songIndex)
+  },
+
+   async getMusicUrl(index,list) {
+    // 获取音频url
+    let res = await request("/song/url", {
+      id:list[index].id
+    })
+    this.setMusicPlay(res.data.data[0].url, list[index].name,)
+    //重新设置index
+    // wx.setStorageSync('songIndex', index)
+  },
+
+  //设置音乐音频
+  setMusicPlay(musicUrl, musicName) {
+    try {
+      globalData.backgroundAudioManager.src = musicUrl
+      globalData.backgroundAudioManager.title = musicName
+    } catch (error) {
+      this.getMusicUrl(index+1)
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

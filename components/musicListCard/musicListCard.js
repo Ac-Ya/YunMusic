@@ -32,9 +32,11 @@ Component({
     },
 
     //监听点击切歌的回调
-    hangleswitch(event){
+    handleswitch(event){
       songIndex = event.currentTarget.dataset.index
       let musicId = this.data.songList[songIndex].id
+      console.log(musicId);
+      console.log(songIndex);
       PubSub.publish("switchSong1",musicId)
       PubSub.publish("switchSong2",songIndex)
       //更新index
@@ -43,7 +45,7 @@ Component({
       })
       wx.setStorageSync('songIndex', songIndex)
     }
-  },
+  }, 
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {

@@ -49,7 +49,10 @@
         </view>
       </view>
       <scroll-view class="recommend-content" enable-flex="true" scroll-x="true">
-        <view class="content-item" wx:for="{{recommendsList}}" wx:key="id">
+        <view 
+        class="content-item" 
+        wx:for="{{recommendsList}}" wx:key="id" 
+        data-id="{{item.id}}" bindtap="toSongListDetails">
           <image src="{{item.picUrl}}" lazy-load="true">
           </image>
           <!-- 推荐歌单播放量 -->
@@ -66,7 +69,7 @@
     <view class="ranking-list">
       <view class="ranking-list-header">
         <text class="title">排行榜</text>  
-        <text class="more">查看更多</text>
+        <text class="more" bindtap="torankingList">查看更多</text>
       </view>
       <swiper class="ranking-list-content" next-margin="30rpx">
           <swiper-item class="ranking-list-item" wx:for="{{ranksList}}" wx:key="index">
@@ -74,10 +77,12 @@
                 <text>{{item.name}}</text>
                 <text class="iconfont icon-icon_on_the_right"></text>
               </view>
-              <view wx:for="{{item.tracks}}" wx:for-item="music" wx:key="id">
+              <view wx:for="{{item.tracks}}" wx:for-item="music" wx:for-index="m_index" wx:key="id"
+               bindtap="hangdleChange" wx:if="{{m_index < 3}}" data-info='{"listIndex":{{index}},"songIndex":{{m_index}},"musicId":{{music.id}}}'
+              >
                 <view class="music-item">
                   <image src="{{music.al.picUrl}}" lazy-load="true"></image>
-                  <text class="count">{{index+1}}</text>
+                  <text class="count">{{m_index+1}}</text>
                   <text class="name">{{music.name}}</text>
                 </view>
               </view>  

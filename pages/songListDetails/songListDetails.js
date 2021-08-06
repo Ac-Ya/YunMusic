@@ -13,7 +13,8 @@ rankingSongList = [],//榜单歌曲列表
 description = '',
 bgImg = '',
 creator = null,
-name = ''
+name = '',
+playCount = 0
 Page({
 
   /**
@@ -29,6 +30,7 @@ Page({
     name:'',//榜单名
     bgImg:'',//背景图
     creator:null,//榜单的用户
+    playCount:0,//榜单播放量
 
 
   },
@@ -55,6 +57,7 @@ Page({
     bgImg = playlist.coverImgUrl
     creator = playlist.creator
     name = playlist.name
+    playCount = playlist.playCount
     this.setData({
       rankingListType,
       updateTime:timestampFormat(updateTimestamp),
@@ -63,7 +66,8 @@ Page({
       description,
       bgImg,
       creator,
-      name
+      name,
+      playCount:tranNumber(playCount,1)
     })
     globalData.songList = rankingSongList
   },

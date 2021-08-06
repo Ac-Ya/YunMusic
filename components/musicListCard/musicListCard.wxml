@@ -9,7 +9,7 @@
     <scroll-view class="card-scroll" scroll-y enable-flex>
       <view 
       data-index = "{{index}}"
-      bindtap="hangleswitch"
+      bindtap="handleswitch"
       class="card-scroll-item {{index === songIndex ? 'active':''}}" 
       wx:for="{{songList}}" wx:key="id">
         <text class="muisc-name">{{item.name}}</text>

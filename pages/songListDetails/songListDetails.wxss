@@ -78,6 +78,7 @@ page{
   top: 30%;
   /* z-index: 9; */
 }
+/* 头部左边 */
 .left{
   position: relative;
   margin-right: 30rpx;
@@ -92,8 +93,10 @@ page{
   right: 10rpx;
   top: 10rpx;
   color: white;
+  font-size: 28rpx;
 }
 
+/* 头部右边 */
 .right .listDesc{
   width: 400rpx;
   color: white;
