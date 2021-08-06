@@ -3,8 +3,8 @@
   <view class="back" bindtap="back">
     <text class="iconfont icon-zuo"></text>
   </view>
-  <!--头部区域  -->
-  <view class="songListDetails-header {{distance >= 220 ? 'header-fixed':''}}">
+  <!--头部区域1  -->
+  <!-- <view class="songListDetails-header {{distance >= 215 ? 'header-fixed':''}}" wx:if="{{false}}">
     <image src="../../static/indexImg/55018946.jpg" class="bgImg">
     </image>
     <view class="list-name">
@@ -12,11 +12,54 @@
       <text class="iconfont .icon-xiangqing"></text>
       <view class="update-time">最近更新:{{updateTime}}</view>
     </view>
-
+  </view> -->
+  <!--头部区域2 -->
+  <view class="songListDetails-header2 {{distance >= 215 ? 'header-fixed':''}}">
+    <view class="bgImg" style="background-image:url({{bgImg}})"></view>
+    <view class="header-content">
+      <view class="left">
+        <image src="{{bgImg}}"></image>
+        <!-- 推荐歌单播放量 -->
+        <view class="count">
+          <text class="iconfont icon-bofang4"></text>
+          <text class="playCount">{{collectNum}}</text>
+        </view>
+      </view>
+      <view class="right">
+        <view class="listDesc">{{name}}</view>
+        <view class="user">
+          <image src="{{creator.avatarUrl}}"></image>
+          <text class="username">{{creator.nickname}} ></text>
+          <!-- <text class="iconfont icon-icon_on_the_right"></text> -->
+        </view>
+        <view class="desc">
+          <text>{{description}} ></text>
+        </view>
+      </view>
+    </view>
+    <!-- 评论，分享，下载，多选 -->
+    <view class="controlBar">
+      <view class="controlBar-item">
+        <text class="iconfont icon-pinglun1"></text>
+        <text>32</text>
+      </view>
+      <view class="controlBar-item">
+        <text class="iconfont icon-fenxiang"></text>
+        <text>79</text>
+      </view>
+      <view class="controlBar-item">
+        <text class="iconfont icon-download"></text>
+        <text>下载</text>
+      </view>
+      <view class="controlBar-item">
+        <text class="iconfont icon-duoxuan"></text>
+        <text>多选</text>
+      </view>
+    </view>
   </view>
   <!-- 内容区 -->
   <view class="songListDetails-content">
-    <view class="allPlayControl {{distance >= 220 ? 'fixed':''}}">
+    <!-- <view class="allPlayControl {{distance >= 220 ? 'fixed':''}}">
       <view class="playAll">
         <text class="iconfont icon-bofang"></text>
         <text class="play">播放全部</text>
@@ -26,19 +69,30 @@
         <text class="iconfont"></text>
         <text class="collecNum">+ 收藏 （{{collectNum}})</text>
       </view>
-    </view>
+    </view> -->
     <view class="musicList">
-      <view 
-      data-song='{"musicId":{{item.id}},"index":{{index}}}'
-      bindtap="tosongDetail"
-      class="musicList-item" 
-      wx:for="{{rankingSongList}}" wx:key="id">
-        <text class="ranking {{index < 3? 'topThree':''}}">{{index+1}}</text>
-        <view class="music-info">
-          <text class="music-name">{{item.name}}</text>
-          <text class="singer">{{item.ar[0].name}}/{{item.ar[1].name}}</text>
+      <!--  -->
+      <view class="allPlayControl {{distance >= 215 ? 'fixed':''}}">
+        <view class="playAll">
+          <text class="iconfont icon-bofang"></text>
+          <text class="play">播放全部</text>
+          <text class="songNum">(共{{rankingSongList.length}}首)</text>
         </view>
-        <text class="iconfont icon-dashujukeshihuaico-"></text>
+        <view class="collection">
+          <text class="iconfont"></text>
+          <text class="collecNum">+ 收藏 （{{collectNum}})</text>
+        </view>
+      </view>
+      <view class="{{distance >= 215 ? 'list':''}}">
+        <view data-song='{"musicId":{{item.id}},"index":{{index}}}' bindtap="tosongDetail" class="musicList-item"
+          wx:for="{{rankingSongList}}" wx:key="id">
+          <text class="ranking {{index < 3? 'topThree':''}}">{{index+1}}</text>
+          <view class="music-info">
+            <text class="music-name">{{item.name}}</text>
+            <text class="singer">{{item.ar[0].name}}/{{item.ar[1].name}}</text>
+          </view>
+          <text class="iconfont icon-dashujukeshihuaico-"></text>
+        </view>
       </view>
     </view>
   </view>

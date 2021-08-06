@@ -10,7 +10,10 @@ rankingListType = '',//榜单类型
 updateTimestamp = 0,//时间戳
 collectNum = "",//榜单收藏数量
 rankingSongList = [],//榜单歌曲列表
-description = ''
+description = '',
+bgImg = '',
+creator = null,
+name = ''
 Page({
 
   /**
@@ -23,6 +26,9 @@ Page({
     collectNum:"",//榜单收藏数量
     rankingSongList:[],//榜单歌曲列表
     description:'',//榜单描述
+    name:'',//榜单名
+    bgImg:'',//背景图
+    creator:null,//榜单的用户
 
 
   },
@@ -39,18 +45,25 @@ Page({
   //通过id获取榜单信息
   async getRankingListData(id){
     let res = await request("/playlist/detail",{id})
+    console.log(res);
     let playlist = res.data.playlist
     rankingListType = playlist.name
     updateTimestamp = playlist.updateTime
     collectNum = playlist.subscribedCount
     rankingSongList = playlist.tracks
     description = playlist.description
+    bgImg = playlist.coverImgUrl
+    creator = playlist.creator
+    name = playlist.name
     this.setData({
       rankingListType,
       updateTime:timestampFormat(updateTimestamp),
       collectNum:tranNumber(collectNum,1),
       rankingSongList,
-      description
+      description,
+      bgImg,
+      creator,
+      name
     })
     globalData.songList = rankingSongList
   },
@@ -62,7 +75,7 @@ Page({
   },
   //跳转到歌曲详情页
   tosongDetail(e){
-    console.log(e);
+    // console.log(e);
     let song = e.currentTarget.dataset.song
     wx.navigateTo({
       url: '/pages/songDetail/songDetail?musicInfo='+song

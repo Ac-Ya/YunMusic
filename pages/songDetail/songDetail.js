@@ -33,7 +33,7 @@ Page({
       index
     })
     wx.setStorageSync('songIndex', index)
-    console.log(globalData.songList);
+    // console.log(globalData.songList);
     wx.setStorageSync('songList', globalData.songList)
     //获取音频信息
     this.getMusicInfo(musicId)

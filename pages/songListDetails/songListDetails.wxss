@@ -1,12 +1,15 @@
 /* pages/songListDetails/songListDetails.wxss */
 /* 头部区域 */
+page{
+  height: 100%;
+}
 .back .iconfont{
   position: fixed;
-  top:60rpx;
-  left: 20rpx;
+  top:50rpx;
+  left: 15rpx;
   z-index: 99;
   color: white;
-  font-size: 60rpx;
+  font-size: 55rpx;
 }
 
 .songListDetails-header{
@@ -15,16 +18,12 @@
   height: 600rpx;
   /* border: 1rpx solid red; */
 }
-.header-fixed{
-  position: fixed;
-  z-index: 9;
-  top:-430rpx;
-}
-.songListDetails-header .bgImg{
 
+.songListDetails-header .bgImg{
   width: 100%;
   height: 100%;
 }
+
 .songListDetails-header .list-name{
   position: absolute;
   top:35%;
@@ -43,11 +42,141 @@
   color:	#F5F5F5;
 }
 
+
+
+
+
+
+/*头部区域2样式  */
+.songListDetails-header2{
+  position: absolute;
+  width: 100%;
+  height: 600rpx;
+  overflow: hidden;
+}
+.songListDetails-header2 .bgImg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0;
+    filter: blur(50rpx);
+    transform: scale(1.5);
+}
+.bgImg::after{
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(250, 250, 250, 0.5);
+}
+.header-content{
+  position: absolute;
+  display: flex;
+  padding: 0 30rpx;
+  top: 30%;
+  /* z-index: 9; */
+}
+.left{
+  position: relative;
+  margin-right: 30rpx;
+}
+.left image{
+  width: 260rpx;
+  height: 260rpx;
+  border-radius: 20rpx;
+}
+.left .count{
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  color: white;
+}
+
+.right .listDesc{
+  width: 400rpx;
+  color: white;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.right .user{
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+  color:white;
+}
+.right image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.user .username{
+  height: 60rpx;
+}
+
+.desc{
+  width: 400rpx;
+  color:white;
+  font-size: 26rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-top: 20rpx;
+}
+
+ /* 评论，分享，下载，多选  */
+.controlBar{
+  position: absolute;
+  bottom: 40rpx;
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+  /* border: 1rpx solid red; */
+}
+.controlBar .controlBar-item{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 24rpx;
+  color: white;
+}
+.controlBar-item .iconfont{
+  font-size: 40rpx;
+}
+
+
+
 /* 内容区 */
-/* 播放及收藏 */
-.songListDetails-content .allPlayControl{
+
+/* 歌曲列表 */
+.musicList{
   position: absolute;
   top:550rpx;
+  display: flex;
+  /* height: calc(100vh - 220rpx); */
+  flex-direction: column;
+  margin-top: 10rpx;
+  width: 100%;
+}
+
+/* 播放及收藏 */
+.songListDetails-content {
+  position: relative;
+  width: 100%;
+}
+.allPlayControl{
+  /* position: absolute; */
+  /* top:550rpx; */
   width: 100%;
   height: 100rpx;
   border-radius: 50rpx 50rpx 0 0;
@@ -55,11 +184,7 @@
   display: flex;
   justify-content: space-between;
 }
-.songListDetails-content .fixed{
-  position: fixed;
-  z-index: 9;
-  top:120rpx;
-}
+
 .playAll{
   height: 100rpx;
   line-height: 100rpx;
@@ -85,21 +210,13 @@
   background-color: #EC4141;
 }
 
-/* 歌曲列表 */
-.musicList{
-  display: flex;
-  height: calc(100vh - 220rpx);
-  flex-direction: column;
-  position: absolute;
-  top:650rpx;
-  margin-top: 10rpx;
-}
+
+
 
 .musicList-item{
   width: 100%;
   display: flex;
   height: 100rpx;
-  /* border: 1rpx solid red; */
   padding-left: 30rpx;
   margin-bottom: 20rpx;
 }
@@ -132,4 +249,21 @@
   font-size: 60rpx;
   line-height: 100rpx;
   margin-left: 20rpx;
+}
+
+
+
+
+.header-fixed{
+  position: fixed;
+  z-index: 9;
+  top:-420rpx;
+}
+.fixed{
+  position: fixed;
+  z-index: 99;
+  top:120rpx;
+} 
+.list{
+  margin-top: 50rpx;
 }
