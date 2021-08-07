@@ -1,0 +1,69 @@
+/* pages/playlist/playlist.wxss */
+
+/*热门歌单标签导航栏样式 */
+.playlist-scroll{
+  display: flex;
+  height: 80rpx;
+  white-space: nowrap;
+  width: 92%;
+}
+.playlist-scroll .playlist-item{
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.playlist-scroll .playlist-name{
+  box-sizing: border-box;
+  height: 70rpx;
+}
+.playlist-item .active{
+  color: #DD001B;
+  border-bottom: 2px solid #DD001B;
+}
+
+
+.playListContainer .all{
+  position: absolute;
+  right: 20rpx;
+  top: 10rpx;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  /* border: 10rpx solid red; */
+  text-align: center;
+  box-shadow: -30rpx 0rpx 20rpx rgba(255, 255, 255, .8);
+  background-color: white;
+}
+.all .iconfont{
+  font-size: 36rpx;
+}
+
+/* 歌单内容区 */
+.playlist-content{
+  display: flex;
+  padding: 20rpx 30rpx;
+}
+.content-item{
+  width: 200rpx;
+  position: relative;
+}
+.content-item image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+}
+.content-item .count{
+  position: absolute;
+  top:0;
+  right: 10rpx;
+  color: white;
+  font-size: 26rpx;
+}
+.content-item .playlist-desc{
+  font-size: 28rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /*行数*/
+  overflow: hidden;
+}
