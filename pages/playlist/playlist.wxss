@@ -1,11 +1,17 @@
 /* pages/playlist/playlist.wxss */
 
 /*热门歌单标签导航栏样式 */
+
 .playlist-scroll{
+  
+  position: fixed;
+  z-index: 9;
+  background-color: white;
   display: flex;
   height: 80rpx;
   white-space: nowrap;
-  width: 92%;
+  width: 94%;
+  border-bottom: 1rpx solid #DCDCDC;
 }
 .playlist-scroll .playlist-item{
   padding: 0 30rpx;
@@ -24,16 +30,17 @@
 
 
 .playListContainer .all{
-  position: absolute;
-  right: 20rpx;
-  top: 10rpx;
+  position: fixed;
+  z-index: 9;
+  right: 10rpx;
+  /* top: 10rpx; */
   width: 60rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  /* border: 10rpx solid red; */
+  height: 80rpx;
+  line-height: 80rpx;
   text-align: center;
   box-shadow: -30rpx 0rpx 20rpx rgba(255, 255, 255, .8);
   background-color: white;
+  border-bottom: 1rpx solid #DCDCDC;
 }
 .all .iconfont{
   font-size: 36rpx;
@@ -41,12 +48,20 @@
 
 /* 歌单内容区 */
 .playlist-content{
+  position: absolute;
+  top: 80rpx;
   display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  /* justify-self: space-between; */
   padding: 20rpx 30rpx;
+  width: 100%;
 }
 .content-item{
   width: 200rpx;
   position: relative;
+  margin:0 35rpx 20rpx 0  ;
+  /* flex: 1; */
 }
 .content-item image{
   width: 200rpx;
@@ -61,6 +76,7 @@
   font-size: 26rpx;
 }
 .content-item .playlist-desc{
+  width: 200rpx;
   font-size: 28rpx;
   display: -webkit-box;
   -webkit-box-orient: vertical;

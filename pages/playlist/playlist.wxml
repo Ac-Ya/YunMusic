@@ -1,34 +1,32 @@
 <!--pages/playlist/playlist.wxml-->
 <view class="playListContainer">
   <!-- 热门歌单标签 -->
-  <scroll-view class="playlist-scroll" 
-  scroll-x enable-flex 
-  scroll-with-animation="true" 
-  scroll-into-view="{{'s'+navId}}"
-  >
-    <view class="playlist-item" 
-    id = "{{'s'+item.id}}"
-    wx:for="{{playlistName}}" data-id="{{item.id}}" wx:key="id" bindtap="changeNav">
-      <view class="playlist-name {{item.id === navId ? 'active':''}}">{{item.name}}</view>
+    <scroll-view class="playlist-scroll" scroll-x enable-flex scroll-with-animation="true"
+      scroll-into-view="{{'s'+navId}}">
+      <view class="playlist-item" id="{{'s'+item.id}}" wx:for="{{playlistName}}"
+        data-playinfo='{"id":{{item.id}},"tag":"{{item.name}}"}' wx:key="id" bindtap="changeNav">
+        <view class="playlist-name {{item.id === navId ? 'active':''}}">{{item.name}}</view>
+      </view>
+    </scroll-view>
+    <view class="all">
+      <text class="iconfont icon-all"></text>
     </view>
-  </scroll-view>
-  <view class="all">
-    <text class="iconfont icon-all"></text>
-  </view>
+
+
 
   <view class="playlist-content">
-    <view class="content-item">
-      <image src="../../static/indexImg/55018946.jpg"></image>
+    <view class="content-item" wx:for="{{playlist}}" wx:key="id">
+      <image src="{{item.coverImgUrl}}"></image>
       <!-- 推荐歌单播放量 -->
       <view class="count">
-            <text class="iconfont icon-bofang4"></text>
-            <text class="playCount">973万</text>
+        <text class="iconfont icon-bofang4"></text>
+        <text class="playCount">{{item.playCount}}</text>
       </view>
       <view class="playlist-desc">
-        【流行说唱】麻烦你活得酷一点hahahaha
+        {{item.description}}
       </view>
     </view>
   </view>
-  
- 
+
+
 </view>
