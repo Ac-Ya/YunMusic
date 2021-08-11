@@ -34,7 +34,7 @@ Page({
   //获取热门歌单的标签名
   async getPlayListName(){
     let res = await request("/playlist/hot")
-    console.log(res);
+    // console.log(res);
     this.setData({
       playlistName:res.data.tags,
       navId:res.data.tags[0].id,
@@ -84,6 +84,14 @@ Page({
 
   },
 
+  //跳转到歌单列表详情页
+  tosongListDetails(e){
+    console.log(e);
+    let id = e.currentTarget.dataset.id
+    wx:wx.navigateTo({
+      url: '/pages/songListDetails/songListDetails?id='+JSON.stringify(id),
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -138,5 +146,4 @@ Page({
   onShareAppMessage: function () {
   
   },
-  
 })

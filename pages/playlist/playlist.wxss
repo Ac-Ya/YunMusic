@@ -14,7 +14,7 @@
   border-bottom: 1rpx solid #DCDCDC;
 }
 .playlist-scroll .playlist-item{
-  padding: 0 30rpx;
+  padding: 0 40rpx;
   font-size: 28rpx;
   height: 80rpx;
   line-height: 80rpx;
@@ -82,4 +82,9 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /*行数*/
   overflow: hidden;
+}
+
+song-control{
+  position: fixed;
+  bottom: 100rpx;
 }

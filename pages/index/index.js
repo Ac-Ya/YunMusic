@@ -106,7 +106,13 @@ Page({
       url: '/pages/songListDetails/songListDetails?id='+JSON.stringify(id),
     })
   },
+  //跳转到歌单叶
+  toplaylist(){
+    wx.navigateTo({
+      url: '/pages/playlist/playlist',
+    })
 
+  },
   //播放音乐
   hangdleChange(e){
     // console.log(e)

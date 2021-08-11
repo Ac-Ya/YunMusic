@@ -15,8 +15,11 @@
 
 
   <view class="playlist-content">
-    <view class="content-item" wx:for="{{playlist}}" wx:key="id">
-      <image src="{{item.coverImgUrl}}"></image>
+    <view class="content-item" 
+    data-id="{{item.id}}"
+    bindtap="tosongListDetails"
+    wx:for="{{playlist}}" wx:key="id">
+      <image src="{{item.coverImgUrl}}" lazy-load="true"></image>
       <!-- 推荐歌单播放量 -->
       <view class="count">
         <text class="iconfont icon-bofang4"></text>
@@ -28,5 +31,8 @@
     </view>
   </view>
 
+  <block>
+      <song-control></song-control>
+  </block>
 
 </view>
